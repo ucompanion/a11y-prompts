@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="pages/base-overview.html">개요</a></li><li><a href="pages/base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="pages/base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="pages/base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="pages/base-p4.html">원칙 4. 견고성</a></li><li><a href="pages/base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="pages/lv-overview.html">개요</a></li><li><a href="pages/lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="pages/lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="pages/lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="pages/base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="pages/ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="pages/lv-all.html">수준별 전체 비교</a></li><li><a href="pages/ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="pages/base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><div class="doc-group" role="group" aria-label="전체 문서"><div class="group-head"><p class="group-name">전체 문서</p><p class="group-desc">문서마다 별도 페이지입니다. 프롬프트에서는 필요한 페이지 URL만 지정하세요.</p></div><section class="doc-section"><p class="crumb">기본문서</p><h2 class="landing-h">기본문서</h2><p>KWCAG 2.2 전체 지침과 품질마크 개요. 항목의 뜻을 확인하는 원본 자료입니다.</p><ul class="landing-list"><li><a href="pages/base-overview.html">개요</a></li><li><a href="pages/base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="pages/base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="pages/base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="pages/base-p4.html">원칙 4. 견고성</a></li><li><a href="pages/base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></section><section class="doc-section"><p class="crumb">실무 체크리스트</p><h2 class="landing-h">실무 체크리스트</h2><p>실무에서 수준별로 지시하는 작업 기준입니다.</p><ul class="landing-list"><li><a href="pages/lv-overview.html">개요</a></li><li><a href="pages/lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="pages/lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="pages/lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="pages/base-components.html">컴포넌트별 체크리스트</a></li></ul></section><section class="doc-section"><p class="crumb">참고사항</p><h2 class="landing-h">참고사항</h2><p>웹접근성 스킬 가이드, 수준별 전체 비교, 지시 없을 때의 클로드 처리 기준, 자주 지적받는 실수를 정리한 참고 자료입니다. 사람이 확인하는 영역입니다.</p><ul class="landing-list"><li><a href="pages/ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="pages/lv-all.html">수준별 전체 비교</a></li><li><a href="pages/ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="pages/base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></section></div></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

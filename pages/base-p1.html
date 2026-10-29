@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>원칙 1. 인식의 용이성 | 기본문서 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html" aria-current="page">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-p1" aria-labelledby="base-p1-h" tabindex="-1"><p class="crumb">기본문서</p><h2 id="base-p1-h">원칙 1. 인식의 용이성</h2><p>화면을 보지 못하거나 색을 구분하기 어려운 사용자도 모든 정보를 받을 수 있어야 합니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-rule">
+<thead>
+<tr>
+<th>지침</th>
+<th>검사항목</th>
+<th>퍼블리싱 규칙</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 대체 텍스트</td>
+<td>1.1.1 적절한 대체 텍스트 제공</td>
+<td>의미 있는 이미지는 <code>alt</code>에 내용·기능을 씀. 장식 이미지는 <code>alt=""</code> 또는 CSS 배경. 이미지 링크·버튼은 목적지나 기능을 씀</td>
+</tr>
+<tr>
+<td>1.2 멀티미디어 대체 수단</td>
+<td>1.2.1 자막 제공</td>
+<td>음성이 있는 영상은 자막, 원고 또는 수어 제공</td>
+</tr>
+<tr>
+<td>1.3 적응성</td>
+<td>1.3.1 표의 구성</td>
+<td>데이터 표에 <code>&lt;caption&gt;</code>, <code>&lt;th&gt;</code>, <code>scope</code> 제공. 레이아웃용 표 금지</td>
+</tr>
+<tr>
+<td>1.3 적응성</td>
+<td>1.3.2 콘텐츠의 선형구조</td>
+<td>DOM 순서 = 읽는 순서. CSS로 시각 순서만 바꾸지 않음</td>
+</tr>
+<tr>
+<td>1.3 적응성</td>
+<td>1.3.3 명확한 지시사항 제공</td>
+<td>"오른쪽 빨간 버튼"처럼 모양·위치·색만으로 안내하지 않음</td>
+</tr>
+<tr>
+<td>1.4 명료성</td>
+<td>1.4.1 색에 무관한 콘텐츠 인식</td>
+<td>오류, 선택 상태, 그래프 범례를 색 외에 텍스트·아이콘·패턴으로도 표시</td>
+</tr>
+<tr>
+<td>1.4 명료성</td>
+<td>1.4.2 자동 재생 금지</td>
+<td>소리는 자동 재생하지 않음. 불가피하면 3초 이내 정지 또는 정지 버튼 제공</td>
+</tr>
+<tr>
+<td>1.4 명료성</td>
+<td>1.4.3 텍스트 콘텐츠의 명도 대비</td>
+<td>일반 텍스트 4.5:1 이상, 큰 텍스트(18pt 또는 굵은 14pt 이상) 3:1 이상</td>
+</tr>
+<tr>
+<td>1.4 명료성</td>
+<td>1.4.4 콘텐츠 간의 구분</td>
+<td>테두리, 여백, 배경색 등으로 인접 콘텐츠를 구분</td>
+</tr>
+</tbody>
+</table></div>
+<p>대체 텍스트 예시:</p>
+<pre><code class="language-html">&lt;!-- 정보 이미지 --&gt;
+&lt;img src=&quot;chart.png&quot; alt=&quot;2026년 3분기 매출 120억 원, 전년 대비 15% 증가&quot;&gt;
+&lt;!-- 장식 이미지 --&gt;
+&lt;img src=&quot;deco.png&quot; alt=&quot;&quot;&gt;
+&lt;!-- 아이콘 버튼 --&gt;
+&lt;button type=&quot;button&quot;&gt;&lt;img src=&quot;close.svg&quot; alt=&quot;팝업 닫기&quot;&gt;&lt;/button&gt;
+</code></pre>
+<p>표 예시:</p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;요금제별 제공량 비교&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;요금제&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;데이터&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;베이직&lt;/th&gt;&lt;td&gt;5GB&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="base-overview.html"><span class="pager-label">이전</span>개요</a><a class="pager-next" href="base-p2.html"><span class="pager-label">다음</span>원칙 2. 운용의 용이성</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

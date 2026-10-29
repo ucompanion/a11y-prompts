@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>원칙 3. 이해의 용이성 | 기본문서 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html" aria-current="page">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-p3" aria-labelledby="base-p3-h" tabindex="-1"><p class="crumb">기본문서</p><h2 id="base-p3-h">원칙 3. 이해의 용이성</h2><p>사용자가 예상하지 못한 화면 변화 없이, 입력과 오류를 이해하고 고칠 수 있어야 합니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-rule">
+<thead>
+<tr>
+<th>지침</th>
+<th>검사항목</th>
+<th>퍼블리싱 규칙</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1 가독성</td>
+<td>3.1.1 기본 언어 표시</td>
+<td><code>&lt;html lang="ko"&gt;</code> 지정. 다른 언어 구간은 <code>lang="en"</code> 등으로 표시</td>
+</tr>
+<tr>
+<td>3.2 예측 가능성</td>
+<td>3.2.1 사용자 요구에 따른 실행</td>
+<td>초점·값 변경만으로 페이지 이동이나 새 창 열기 금지. 새 창은 "새 창 열림"을 <code>title</code> 또는 숨김 텍스트로 안내</td>
+</tr>
+<tr>
+<td>3.2 예측 가능성</td>
+<td>3.2.2 찾기 쉬운 도움 정보</td>
+<td>고객센터·도움말 링크를 모든 페이지의 같은 위치·순서에 배치</td>
+</tr>
+<tr>
+<td>3.3 입력 도움</td>
+<td>3.3.1 오류 정정</td>
+<td>오류 위치와 원인을 텍스트로 알리고 수정 방법 안내. 입력값 유지</td>
+</tr>
+<tr>
+<td>3.3 입력 도움</td>
+<td>3.3.2 레이블 제공</td>
+<td>모든 입력 요소에 <code>&lt;label for&gt;</code> 또는 <code>aria-label</code>. <code>placeholder</code>만으로 대체 금지</td>
+</tr>
+<tr>
+<td>3.3 입력 도움</td>
+<td>3.3.3 접근 가능한 인증</td>
+<td>캡차·퍼즐 등 인지 테스트만 요구하지 않음. 붙여넣기·비밀번호 관리자 허용</td>
+</tr>
+<tr>
+<td>3.3 입력 도움</td>
+<td>3.3.4 반복 입력 정보</td>
+<td>같은 과정에서 이미 입력한 정보는 자동 채움 또는 선택 제공</td>
+</tr>
+</tbody>
+</table></div>
+<p>폼 레이블·오류 안내 예시:</p>
+<pre><code class="language-html">&lt;label for=&quot;email&quot;&gt;이메일 &lt;span aria-hidden=&quot;true&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;blind&quot;&gt;필수&lt;/span&gt;&lt;/label&gt;
+&lt;input id=&quot;email&quot; type=&quot;email&quot; autocomplete=&quot;email&quot;
+       aria-describedby=&quot;email-error&quot; aria-invalid=&quot;true&quot;&gt;
+&lt;p id=&quot;email-error&quot; role=&quot;alert&quot;&gt;이메일 형식이 올바르지 않습니다. 예: name@example.com&lt;/p&gt;
+</code></pre>
+<p>새 창 링크 예시:</p>
+<pre><code class="language-html">&lt;a href=&quot;https://example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;이용약관&lt;span class=&quot;blind&quot;&gt; (새 창 열림)&lt;/span&gt;&lt;/a&gt;
+</code></pre></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="base-p2.html"><span class="pager-label">이전</span>원칙 2. 운용의 용이성</a><a class="pager-next" href="base-p4.html"><span class="pager-label">다음</span>원칙 4. 견고성</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L1 기본 준수 (프롬프트용) | 실무 체크리스트 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html" aria-current="page">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="lv-l1" aria-labelledby="lv-l1-h" tabindex="-1"><p class="crumb">실무 체크리스트</p><h2 id="lv-l1-h">L1 기본 준수 (프롬프트용)</h2><p>노출 범위: <strong>규칙 + 구현</strong>. 자주 위반되는 핵심 항목만 다룹니다.</p>
+<h3>적용 기준</h3>
+<p>일반 페이지·사내 시스템 퍼블리싱, 피그마 시안 반영 작업에서 기본 준수를 지시했을 때 적용합니다. 기존 구조와 디자인은 그대로 두고, 마크업 수준에서 바로 고칠 수 있는 것만 지킵니다.</p>
+<h3>작업 지시</h3>
+<ol>
+<li>아래 핵심 항목 기준에 못 미치는 것만 고치고, 이미 충족한 것은 그대로 둔다. 나머지 항목은 검토하거나 언급하지 않는다.</li>
+<li>구조·디자인을 바꾸는 수정은 하지 않는다.</li>
+<li>클릭 요소는 <code>&lt;a&gt;</code>(이동)·<code>&lt;button&gt;</code>(동작)만 쓴다.</li>
+<li>대체 텍스트, 레이블, 제목은 시안 문구를 근거로 작성한다.</li>
+<li>결과물은 코드로만 제시하고 항목별 설명은 생략한다.</li>
+</ol>
+<h3>항목별 규칙</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="항목별 규칙 표"><table class="tbl-rule4">
+<thead>
+<tr>
+<th>항목</th>
+<th>유형</th>
+<th>적용</th>
+<th>구현</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="6"><span class="rule-title">1.1.1 적절한 대체 텍스트 제공</span></th><td title="대표 오류&#10;· 정보 이미지: alt 누락, 파일명, alt=&quot;이미지&quot;&#10;· 이모티콘 이미지: alt=&quot;이모티콘&quot;&#10;· QR코드: alt=&quot;QR코드&quot;&#10;· 캡차: alt에 정답 문자 기재&#10;· 사용자가 올리는 이미지: 입력 수단 없음">정보 이미지</td><td>준수</td><td><code>alt</code>에 이미지가 전달하는 내용을 씀. "이미지", "사진" 같은 요소 정보는 넣지 않음</td></tr>
+<tr><td title="대표 오류: alt=&quot;구분선&quot;">장식 이미지</td><td>준수</td><td><code>alt=""</code> 또는 CSS <code>background-image</code></td></tr>
+<tr><td data-skill="C" title="대표 오류&#10;· 이미지 링크·버튼: alt=&quot;더보기&quot;처럼 기능을 알 수 없음&#10;· 썸네일 + 같은 제목 텍스트: 이미지와 텍스트가 각각 같은 내용을 읽음">이미지 링크·버튼</td><td>준수</td><td><code>alt</code>에 목적지·기능을 씀("홈", "입사 지원서 PDF 다운로드"). 같은 제목 텍스트와 한 링크로 묶으면 이미지 <code>alt=""</code></td></tr>
+<tr><td data-skill="B" title="대표 오류&#10;· 아이콘 폰트·SVG·빈 링크·빈 버튼: &lt;button&gt;&lt;/button&gt;, &lt;a class=&quot;menu&quot;&gt;&lt;/a&gt;&#10;· 영어·약어 아이콘 텍스트: 영어 그대로 읽힘">아이콘 폰트·SVG 아이콘 버튼</td><td>준수</td><td>아이콘은 <code>aria-hidden="true"</code>, 요소 안에 <code>.blind</code> 텍스트 또는 <code>aria-label</code>. 영어·약어는 한국어로 풀어 씀(new → 새 글)</td></tr>
+<tr><td data-skill="C" title="대표 오류: 문구 일부만 기재">텍스트가 들어간 배너</td><td>준수</td><td>이미지 속 문구 전체를 <code>alt</code>에. 길면 숨김 텍스트로</td></tr>
+<tr><td title="대표 오류: alt 누락"><code>&lt;input type="image"&gt;</code></td><td>준수</td><td><code>alt</code> 필수</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">1.4.3 텍스트 콘텐츠의 명도 대비</span></th><td data-skill="C" title="대표 오류: 회색 안내 문구(#999 계열)">본문 텍스트</td><td>준수</td><td>4.5:1 이상</td></tr>
+<tr><td data-skill="C" title="대표 오류&#10;· placeholder, 입력값, 링크·버튼 텍스트: 연한 placeholder&#10;· 상태별 텍스트(hover, 비활성 아님): hover 시 대비 저하">버튼·링크·입력 텍스트</td><td>준수</td><td>4.5:1 이상. hover 등 모든 상태에서 충족</td></tr>
+<tr><td data-skill="C">큰 텍스트(18pt, 굵은 14pt 이상)</td><td>준수</td><td>3:1 이상(화면 확대가 가능한 텍스트 콘텐츠도 3:1까지)</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.1.1 키보드 사용 보장</span></th><td title="대표 오류&#10;· 링크·버튼: &lt;div onclick&gt;, &lt;a&gt;에 href 없음&#10;· 키보드 이벤트 처리: 키 처리 누락">링크·버튼</td><td>준수</td><td>이동은 <code>&lt;a href&gt;</code>, 동작은 <code>&lt;button type="button"&gt;</code>. 키 처리는 <code>keydown</code>에서(<code>keypress</code> 의존 지양)</td></tr>
+<tr><td title="대표 오류: 마우스 이벤트만 연결"><code>div</code>·<code>span</code> 클릭 요소</td><td>준수</td><td><code>&lt;button&gt;</code>으로 교체. 불가하면 <code>role="button" tabindex="0"</code> + Enter·Space 처리</td></tr>
+<tr><td title="대표 오류: 진입 후 조작 불가">키보드 트랩</td><td>준수</td><td>에디터·iframe·플러그인·모달에서 키보드로 진입·조작하고 Tab 또는 Esc로 빠져나올 수 있게</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">2.1.2 초점 이동과 표시</span></th><td data-skill="C" title="대표 오류: outline: none 후 대체 스타일 없음">초점 표시</td><td>준수</td><td><code>:focus-visible</code>에 테두리·배경 변화(<code>outline: 2px solid; outline-offset: 2px</code>). <code>outline: none</code> 단독 금지, 표시에 시간제한 없음</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">2.4.1 반복 영역 건너뛰기</span></th><td data-skill="B" title="대표 오류&#10;· 건너뛰기 링크 위치: 메뉴 뒤에 위치&#10;· 연결 대상: id 불일치, 이동 후 초점 유실">본문 바로가기</td><td>준수</td><td>첫 번째 Tab 요소로 <code>&lt;a href="#content"&gt;</code>, 대상 <code>&lt;main id="content" tabindex="-1"&gt;</code></td></tr>
+<tr><td data-skill="B" title="대표 오류: display: none으로 숨김">숨김 처리 방식</td><td>준수</td><td>평소 화면 밖, <code>:focus</code> 시 화면에 표시(<code>display: none</code>으로 숨기지 않음)</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">2.4.2 제목 제공</span></th><td data-skill="B" title="대표 오류&#10;· 페이지 &lt;title&gt;: 모든 페이지 같은 제목, &quot;환영합니다&quot;&#10;· 팝업창: 제목 없는 팝업&#10;· 특수 기호: &quot;★★공지★★&quot;">페이지 <code>&lt;title&gt;</code></td><td>준수</td><td>"페이지명 | 사이트명", 페이지마다 고유하고 내용을 나타냄. 팝업창에도 <code>&lt;title&gt;</code>, 불필요한 기호 반복 금지</td></tr>
+<tr><td title="대표 오류&#10;· 콘텐츠 블록: 제목을 &lt;p&gt;·&lt;strong&gt;으로&#10;· 본문 없는 블록: 내용 없는 빈 헤딩">헤딩 구조</td><td>준수</td><td><code>h1</code> 하나, 단계 건너뛰기 없음. 블록 제목은 <code>h1</code>~<code>h6</code>(<code>&lt;p&gt;</code>·<code>&lt;strong&gt;</code> 금지), 본문 없는 블록에는 붙이지 않음</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">2.4.3 적절한 링크 텍스트</span></th><td data-skill="B" title="대표 오류&#10;· &quot;더보기&quot;: 같은 &quot;더보기&quot;가 여러 개&#10;· &quot;바로가기&quot;, &quot;GO&quot;: 대상 없는 &quot;바로가기&quot;">반복되는 "더보기"</td><td>준수</td><td>맥락으로 대상을 알 수 있게, 여럿이면 숨김 텍스트: <code>더보기&lt;span class="blind"&gt; 공지사항&lt;/span&gt;</code></td></tr>
+<tr><td title="대표 오류&#10;· 이미지 링크 + 텍스트: 같은 곳 링크가 둘, 중복 낭독&#10;· 아이콘 링크: 빈 링크">이미지 링크</td><td>준수</td><td><code>alt</code>에 목적지. 같은 대상의 텍스트가 있으면 하나의 링크로 묶고 이미지 <code>alt=""</code></td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">3.1.1 기본 언어 표시</span></th><td title="대표 오류&#10;· 페이지 기본 언어: lang 누락, 한국어 페이지에 lang=&quot;en&quot;&#10;· iframe 내부 문서: 내부 문서 lang 누락">페이지 주 언어</td><td>준수</td><td><code>&lt;html lang="ko"&gt;</code>(ISO 639 언어 코드). iframe 내부 문서에도 <code>lang</code></td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">3.3.2 레이블 제공</span></th><td title="대표 오류&#10;· 텍스트 입력·셀렉트·텍스트 영역: 레이블이 텍스트로만 있고 연결 없음&#10;· 입력 형식·조건 안내: 안내가 입력란과 분리&#10;· 커스텀 입력 컴포넌트: 네임 없음">텍스트 입력</td><td>준수</td><td><code>&lt;label for="id"&gt;</code>와 <code>id</code> 연결, 또는 <code>&lt;label&gt;</code>로 감싸기. 형식·조건 안내는 <code>aria-describedby</code>로 연결, 커스텀 입력은 <code>aria-labelledby</code></td></tr>
+<tr><td data-skill="C" title="대표 오류: placeholder만">레이블이 안 보이는 입력(검색창)</td><td>준수</td><td>숨김 <code>&lt;label&gt;</code>, <code>title</code>, <code>aria-label</code>, <code>aria-labelledby</code> 중 하나</td></tr>
+<tr><td data-skill="C"><code>placeholder</code>만 있는 입력</td><td>준수</td><td>사용 금지, 레이블 추가</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">4.1.1 마크업 오류 방지</span></th><td title="대표 오류: 같은 id가 목록마다 반복">중복 <code>id</code></td><td>준수</td><td>문서 안 <code>id</code> 유일. 반복 컴포넌트·동적 삽입은 고유 접미사</td></tr>
+<tr><td title="대표 오류&#10;· 요소의 열고 닫음: &lt;/div&gt; 누락&#10;· 요소의 중첩: &lt;b&gt;&lt;i&gt;&lt;/b&gt;&lt;/i&gt;, &lt;a&gt; 안 &lt;button&gt;, &lt;p&gt; 안 &lt;div&gt;">열고 닫기·중첩 오류</td><td>준수</td><td>시작·끝 태그 짝 맞춤(<code>&lt;/div&gt;</code> 누락 금지), <code>&lt;a&gt;</code> 안 <code>&lt;button&gt;</code>·<code>&lt;p&gt;</code> 안 <code>&lt;div&gt;</code> 같은 잘못된 중첩 금지</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">4.2.1 웹 애플리케이션 접근성 준수</span></th><td title="대표 오류&#10;· 네이티브 요소 우선: div로 만든 버튼·체크박스&#10;· ARIA 사용 규칙: 숨긴 요소가 초점 받음">네이티브 요소 우선</td><td>준수</td><td><code>&lt;button&gt;</code>·<code>&lt;a&gt;</code>·<code>&lt;input&gt;</code>·<code>&lt;select&gt;</code>·<code>&lt;details&gt;</code>·<code>&lt;dialog&gt;</code>로 되면 ARIA를 쓰지 않음. 네이티브 의미를 덮지 않고, 초점 받는 요소에 <code>aria-hidden="true"</code> 금지</td></tr>
+</tbody>
+</table></div>
+<h3>완료 점검</h3>
+<ul class="checklist">
+<li class="check"><input type="checkbox" id="lv-l1-c1"><label for="lv-l1-c1">Lighthouse 또는 axe 자동 검사 오류 0건</label></li>
+<li class="check"><input type="checkbox" id="lv-l1-c2"><label for="lv-l1-c2">Tab 키로 모든 링크·버튼 이동, 초점 보임</label></li>
+<li class="check"><input type="checkbox" id="lv-l1-c3"><label for="lv-l1-c3">모든 <code>&lt;img&gt;</code>에 <code>alt</code> 있음</label></li>
+</ul></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="lv-overview.html"><span class="pager-label">이전</span>개요</a><a class="pager-next" href="lv-l2.html"><span class="pager-label">다음</span>L2 전문 준수 (프롬프트용)</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

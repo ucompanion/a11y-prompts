@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자주 지적받는 실수와 검증 도구 | 참고사항 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html" aria-current="page">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-mistakes" aria-labelledby="base-mistakes-h" tabindex="-1"><p class="crumb">참고사항</p><h2 id="base-mistakes-h">자주 지적받는 실수와 검증 도구</h2><p>인증 심사에서 자주 지적되는 실수는 대부분 초점, 대체 텍스트, 레이블 세 가지에 몰려 있습니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-kv">
+<thead>
+<tr>
+<th>실수</th>
+<th>고치는 법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>outline: none</code>으로 초점 표시 제거</td>
+<td><code>:focus-visible</code> 스타일 제공</td>
+</tr>
+<tr>
+<td><code>alt="이미지"</code>, <code>alt="배너"</code>처럼 무의미한 대체 텍스트</td>
+<td>이미지가 전달하는 내용을 씀</td>
+</tr>
+<tr>
+<td>이미지 안에 긴 텍스트(배너 문구)</td>
+<td><code>alt</code>에 같은 문구 전체 기재 또는 본문 텍스트로 제공</td>
+</tr>
+<tr>
+<td><code>placeholder</code>만 있는 입력 필드</td>
+<td><code>&lt;label&gt;</code> 추가, 시각적으로 숨기려면 <code>.blind</code></td>
+</tr>
+<tr>
+<td>"더보기"가 여러 개인데 구분 불가</td>
+<td>숨김 텍스트로 대상 명시</td>
+</tr>
+<tr>
+<td>클릭 이벤트만 있는 <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code></td>
+<td><code>&lt;button&gt;</code>으로 교체</td>
+</tr>
+<tr>
+<td>모달 뒤 배경으로 초점이 빠져나감</td>
+<td>초점 가두기 + 배경에 <code>inert</code> 속성</td>
+</tr>
+<tr>
+<td>탭·아코디언 상태 속성 미갱신</td>
+<td>스크립트에서 <code>aria-selected</code>·<code>aria-expanded</code> 함께 변경</td>
+</tr>
+<tr>
+<td>헤딩을 글자 크기 맞추려고 아무 단계나 사용</td>
+<td>구조 순서대로 쓰고 크기는 CSS로 조정</td>
+</tr>
+</tbody>
+</table></div>
+<p>검증 도구:</p>
+<ul>
+<li><strong>자동 점검</strong>: axe DevTools, WAVE, Lighthouse, 브라우저 개발자 도구의 접근성 트리</li>
+<li><strong>명도 대비</strong>: Colour Contrast Analyser, 개발자 도구 색상 선택기</li>
+<li><strong>마크업</strong>: W3C Markup Validation Service</li>
+<li><strong>스크린리더 실사용</strong>: NVDA, 센스리더(Windows), VoiceOver(macOS·iOS), TalkBack(Android)</li>
+</ul>
+<p>자동 도구는 일부 항목만 잡아내므로, 키보드 조작과 스크린리더 확인은 직접 해야 합니다.</p></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="ref-default.html"><span class="pager-label">이전</span>지시 없을 때 클로드 처리 기준</a><span></span></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컴포넌트별 체크리스트 | 실무 체크리스트 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html" aria-current="page">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-components" aria-labelledby="base-components-h" tabindex="-1"><p class="crumb">실무 체크리스트</p><h2 id="base-components-h">컴포넌트별 체크리스트</h2><p>자주 만드는 UI 컴포넌트마다 꼭 들어가야 할 마크업과 키보드 동작입니다. L2 전문 준수부터 반영 기준으로 지정합니다. L1 기본 준수는 이 기준을 지정하지 않으며, 컴포넌트는 클로드가 알아서 처리합니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-component">
+<thead>
+<tr>
+<th>컴포넌트</th>
+<th>필수 마크업</th>
+<th>키보드·초점 동작</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>탭</td>
+<td><code>role="tablist"</code> / <code>tab</code> / <code>tabpanel</code>, <code>aria-selected</code>, <code>aria-controls</code></td>
+<td>좌우 방향키로 탭 이동, 선택된 탭만 <code>tabindex="0"</code></td>
+</tr>
+<tr>
+<td>모달</td>
+<td><code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-labelledby</code>로 제목 연결</td>
+<td>열리면 모달 안으로 초점 이동, Tab 순환을 모달 안에 가둠, Esc로 닫기, 닫으면 연 버튼으로 초점 복귀</td>
+</tr>
+<tr>
+<td>아코디언</td>
+<td>제목 <code>&lt;button aria-expanded aria-controls&gt;</code>, 패널에 <code>id</code></td>
+<td>Enter·Space로 토글, <code>aria-expanded</code> 값 갱신</td>
+</tr>
+<tr>
+<td>슬라이드(캐러셀)</td>
+<td>정지·재생, 이전·다음 버튼, 현재 위치("3 / 5") 텍스트</td>
+<td>자동 재생은 초점·마우스오버 시 멈춤, 숨겨진 슬라이드 안 링크는 초점 제외</td>
+</tr>
+<tr>
+<td>드롭다운 메뉴</td>
+<td>트리거 <code>&lt;button aria-expanded aria-haspopup&gt;</code></td>
+<td>Enter로 열기, Esc로 닫고 트리거로 초점 복귀</td>
+</tr>
+<tr>
+<td>폼</td>
+<td><code>&lt;label for&gt;</code>, <code>&lt;fieldset&gt;</code>·<code>&lt;legend&gt;</code>로 그룹, <code>autocomplete</code></td>
+<td>오류 시 첫 오류 필드로 초점 이동 또는 <code>role="alert"</code>로 안내</td>
+</tr>
+<tr>
+<td>이미지·아이콘 버튼</td>
+<td><code>&lt;button&gt;</code> 안에 <code>alt</code> 또는 숨김 텍스트</td>
+<td>초점 표시 확인</td>
+</tr>
+<tr>
+<td>토스트·알림</td>
+<td><code>role="status"</code>(일반) 또는 <code>role="alert"</code>(긴급)</td>
+<td>초점을 뺏지 않음, 충분한 표시 시간</td>
+</tr>
+<tr>
+<td>페이지네이션</td>
+<td><code>&lt;nav aria-label="페이지"&gt;</code>, 현재 페이지 <code>aria-current="page"</code></td>
+<td>이전·다음 링크에 텍스트 제공</td>
+</tr>
+</tbody>
+</table></div>
+<p>작업 완료 전 공통 점검:</p>
+<ul class="checklist">
+<li class="check"><input type="checkbox" id="base-components-c1"><label for="base-components-c1">마우스 없이 Tab·Shift+Tab·Enter·Space·Esc로 모든 기능 사용 가능</label></li>
+<li class="check"><input type="checkbox" id="base-components-c2"><label for="base-components-c2">모든 초점 위치가 눈에 보임</label></li>
+<li class="check"><input type="checkbox" id="base-components-c3"><label for="base-components-c3">페이지 <code>&lt;title&gt;</code>과 헤딩 계층(<code>h1</code> 하나, 단계 건너뛰기 없음) 확인</label></li>
+<li class="check"><input type="checkbox" id="base-components-c4"><label for="base-components-c4">이미지 <code>alt</code> 누락 없음</label></li>
+<li class="check"><input type="checkbox" id="base-components-c5"><label for="base-components-c5">텍스트 명도 대비 4.5:1 이상</label></li>
+<li class="check"><input type="checkbox" id="base-components-c6"><label for="base-components-c6">화면 200% 확대 시 내용 잘림·겹침 없음</label></li>
+<li class="check"><input type="checkbox" id="base-components-c7"><label for="base-components-c7">HTML 유효성 검사 통과(중복 <code>id</code> 없음)</label></li>
+</ul></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="lv-l3.html"><span class="pager-label">이전</span>L3 품질마크 (프롬프트용)</a><a class="pager-next" href="ref-skill.html"><span class="pager-label">다음</span>웹접근성 스킬 가이드</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

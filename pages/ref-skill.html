@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹접근성 스킬 가이드 | 참고사항 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html" aria-current="page">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="ref-skill" aria-labelledby="ref-skill-h" tabindex="-1"><p class="crumb">참고사항</p><h2 id="ref-skill-h">웹접근성 스킬 가이드</h2>
+<p>웹접근성 퍼블리싱 스킬이 무엇을 하고, 요청에 따라 어떻게 동작하는지 정리한 가이드입니다. 등록 예정인 스킬의 설계 기준이며, 스킬이 다루는 범위는 실무 체크리스트의 L1·L2·L3와 컴포넌트별 체크리스트이며, 이 문서들이 스킬의 참조 파일이 됩니다.</p>
+<h3>하는 일</h3>
+<p>퍼블리싱·마크업 작업에서 요청에 맞는 접근성 수준(L1~L3)의 기준을 골라 적용합니다. 수준은 한 번에 하나만 적용합니다.</p>
+<h3>동작 순서</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="동작 순서 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>단계</th>
+<th>하는 일</th>
+<th>읽는 파일</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1. 요청 확인</td><td>접근성·퍼블리싱 요청이면 스킬이 켜짐</td><td>SKILL.md</td></tr>
+<tr><td>2. 수준 결정</td><td>요청에 수준이 있으면 그대로, 없으면 키워드로 판단, 그래도 애매하면 <strong>L1</strong></td><td>SKILL.md</td></tr>
+<tr><td>3. 기준 읽기</td><td>결정된 수준의 항목별 규칙(유형·적용·구현) 하나만 읽음</td><td>level-1·2·3 중 하나</td></tr>
+<tr><td>4. 컴포넌트 확인</td><td>L2부터 반영: 탭, 모달 같은 커스텀 컴포넌트를 만들 때 읽음(L1은 기준으로 지정하지 않으며, 클로드가 알아서 처리)</td><td>components</td></tr>
+<tr><td>5. 작업</td><td>기준에 따라 마크업·코드 작성</td><td></td></tr>
+</tbody>
+</table></div>
+
+<h3>수준 결정 기준</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="수준 결정 기준 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>수준</th>
+<th>이런 요청</th>
+<th>판단 키워드</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>L1 기본 준수</td><td>일반 웹사이트 퍼블리싱, 시안 반영. <strong>수준이 없을 때의 기본값</strong></td><td>퍼블리싱, 마크업, 기본</td></tr>
+<tr><td>L2 전문 준수</td><td>접근성 요구가 높은 웹사이트</td><td>접근성 전체, ARIA, 스크린리더</td></tr>
+<tr><td>L3 품질마크</td><td>웹 접근성 자체가 목적인 작업</td><td>인증, 품질마크, 완벽 준수</td></tr>
+</tbody>
+</table></div>
+<p>애매할 때는 낮은 수준으로 시작하고, 필요하면 한 단계씩 올립니다.</p>
+<h3>요청 예시</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="요청 예시 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>이렇게 요청하면</th>
+<th>적용 수준</th>
+<th>읽는 파일</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>"공지사항 페이지 퍼블리싱해줘"</td><td>L1(지시 없음)</td><td>level-1</td></tr>
+<tr><td>"스크린리더까지 고려해서 모달 만들어줘"</td><td>L2</td><td>level-2, components</td></tr>
+<tr><td>"품질마크 인증 목표로 검수해줘"</td><td>L3</td><td>level-3, components</td></tr>
+<tr><td>"L2 기준으로 이 마크업 고쳐줘"</td><td>L2(명시한 수준 우선)</td><td>level-2</td></tr>
+</tbody>
+</table></div>
+
+<h3>파일 구성</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="파일 구성 표"><table class="tbl-kv">
+<thead>
+<tr>
+<th>파일</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>SKILL.md</td><td>언제 쓰는지, 수준 결정 규칙, 어떤 파일을 읽을지</td></tr>
+<tr><td>level-1·2·3</td><td>수준별 항목별 규칙(항목, 판정 기준, 유형별 적용·구현)</td></tr>
+<tr><td>components</td><td>컴포넌트별 필수 마크업과 키보드·초점 동작(L2부터 적용, level-2·3 파일에서 참조)</td></tr>
+</tbody>
+</table></div>
+
+<h3>알아둘 점</h3>
+<ul>
+<li>수준 파일은 하나만 읽습니다. 여러 수준을 한꺼번에 읽으면 기준이 섞이고 읽는 분량도 늘어납니다.</li>
+<li>요청에 수준이 명시되면 키워드 판단보다 명시한 수준을 우선합니다.</li>
+</ul></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="base-components.html"><span class="pager-label">이전</span>컴포넌트별 체크리스트</a><a class="pager-next" href="lv-all.html"><span class="pager-label">다음</span>수준별 전체 비교</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

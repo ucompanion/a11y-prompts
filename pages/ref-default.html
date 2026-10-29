@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지시 없을 때 클로드 처리 기준 | 참고사항 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html" aria-current="page">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="ref-default" aria-labelledby="ref-default-h" tabindex="-1"><p class="crumb">참고사항</p><h2 id="ref-default-h">지시 없을 때 클로드 처리 기준</h2>
+<h3>결론</h3><p>접근성 지시 없이 웹사이트를 만들 때 Claude의 기본 처리는 <strong>L1에 못 미치거나 L1 일부만 충족하는 수준</strong>입니다. 시맨틱 마크업처럼 "좋은 HTML 습관"에 포함된 것은 대체로 처리하지만, 접근성만을 위한 장치는 대부분 빠집니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-kv">
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>판단 방식</td>
+<td>접근성 기준을 따로 적용하지 않고, 일반적인 웹 개발 관행을 따름</td>
+</tr>
+<tr>
+<td>잘 되는 것</td>
+<td>시맨틱 태그, 페이지 제목, 헤딩, 이미지 <code>alt</code>, <code>&lt;button&gt;</code>·<code>&lt;label&gt;</code> 사용</td>
+</tr>
+<tr>
+<td>빠지는 것</td>
+<td>건너뛰기 링크, 초점 관리, 상태 속성, 오류 연결, 정지 기능, 숨김 텍스트</td>
+</tr>
+<tr>
+<td>일관성</td>
+<td>낮음. 요청 문구, 디자인 비중, 코드 길이에 따라 같은 작업도 결과가 달라짐</td>
+</tr>
+</tbody>
+</table></div>
+<p>이 문서는 Claude가 스스로 관찰한 일반적인 경향을 정리한 것으로, 보장된 동작이 아닙니다. 실제 결과는 세션마다 다를 수 있습니다.</p>
+<h3>항목별 기본 처리</h3><p>표기: <strong>대부분</strong> 거의 매번 처리 · <strong>가끔</strong> 상황에 따라 처리 · <strong>드묾</strong> 거의 처리하지 않음. 오른쪽 열은 해당 결과가 어느 수준까지 충족하는지입니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-quad">
+<thead>
+<tr>
+<th>항목</th>
+<th>기본 처리</th>
+<th>실제 모습</th>
+<th>충족 수준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1.1 대체 텍스트</td>
+<td>대부분</td>
+<td><code>alt</code>는 넣지만 "메인 이미지"처럼 일반적인 문구가 많음. 장식 이미지 <code>alt=""</code>는 가끔</td>
+<td>L1 일부</td>
+</tr>
+<tr>
+<td>1.2.1 자막</td>
+<td>드묾</td>
+<td>영상 태그에 <code>&lt;track&gt;</code>을 넣지 않음</td>
+<td>미충족</td>
+</tr>
+<tr>
+<td>1.3.1 표의 구성</td>
+<td>가끔</td>
+<td><code>&lt;th&gt;</code>는 쓰지만 <code>scope</code>·<code>&lt;caption&gt;</code>은 자주 빠짐</td>
+<td>L2 일부</td>
+</tr>
+<tr>
+<td>1.3.2 선형구조</td>
+<td>대부분</td>
+<td>레이아웃을 DOM 순서대로 짜는 편. CSS로 순서를 바꾸는 경우는 고려 안 함</td>
+<td>L2 일부</td>
+</tr>
+<tr>
+<td>1.3.3 명확한 지시</td>
+<td>대부분</td>
+<td>문구 자체를 모양·색 지시로 쓰는 일이 드묾</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>1.4.1 색 무관 인식</td>
+<td>가끔</td>
+<td>활성 메뉴·오류 상태를 색만으로 표시하는 경우가 많음</td>
+<td>미충족~L2 일부</td>
+</tr>
+<tr>
+<td>1.4.2 자동 재생 금지</td>
+<td>대부분</td>
+<td>배경 영상은 <code>muted</code>로 넣음</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>1.4.3 명도 대비</td>
+<td>가끔</td>
+<td>본문은 대체로 충족, 보조 문구·<code>placeholder</code>에 연회색을 자주 씀</td>
+<td>L1 일부</td>
+</tr>
+<tr>
+<td>1.4.4 콘텐츠 구분</td>
+<td>대부분</td>
+<td>카드·섹션을 여백·테두리로 구분하는 디자인 관행</td>
+<td>L3 수준 우연 충족</td>
+</tr>
+<tr>
+<td>2.1.1 키보드 사용</td>
+<td>대부분</td>
+<td>동작은 <code>&lt;button&gt;</code> 사용. 다만 카드 전체 클릭을 <code>div</code>로 만드는 경우가 있음</td>
+<td>L1 일부</td>
+</tr>
+<tr>
+<td>2.1.2 초점 표시</td>
+<td>가끔</td>
+<td>커스텀 버튼·입력 스타일에서 <code>outline: none</code>을 넣고 대체 스타일을 빼는 경우가 있음</td>
+<td>미충족~L1</td>
+</tr>
+<tr>
+<td>2.1.3 조작 가능</td>
+<td>가끔</td>
+<td>버튼은 넉넉하지만 아이콘 버튼·닫기 버튼이 작아지는 경우가 있음</td>
+<td>L2 일부</td>
+</tr>
+<tr>
+<td>2.1.4 문자 단축키</td>
+<td>해당 없음</td>
+<td>단축키를 거의 만들지 않음</td>
+<td class="mark-cell"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></td>
+</tr>
+<tr>
+<td>2.2.1 응답시간 조절</td>
+<td>드묾</td>
+<td>시간 제한 기능을 만들 때 연장 수단을 넣지 않음</td>
+<td>미충족</td>
+</tr>
+<tr>
+<td>2.2.2 정지 기능</td>
+<td>드묾</td>
+<td>자동 슬라이드에 이전·다음은 넣지만 정지 버튼은 거의 없음</td>
+<td>미충족</td>
+</tr>
+<tr>
+<td>2.3.1 깜빡임 제한</td>
+<td>대부분</td>
+<td>깜빡임 효과를 거의 쓰지 않음</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>2.4.1 건너뛰기</td>
+<td>드묾</td>
+<td>본문 바로가기 링크를 넣지 않음</td>
+<td>미충족</td>
+</tr>
+<tr>
+<td>2.4.2 제목 제공</td>
+<td>대부분</td>
+<td><code>&lt;title&gt;</code>, <code>h1</code>~<code>h3</code> 사용. 헤딩 단계 건너뛰기가 가끔 있음</td>
+<td>L1</td>
+</tr>
+<tr>
+<td>2.4.3 링크 텍스트</td>
+<td>가끔</td>
+<td>"더보기" "자세히"를 반복해 쓰고 숨김 텍스트로 보완하지 않음</td>
+<td>미충족~L1 일부</td>
+</tr>
+<tr>
+<td>2.4.4 참조 위치</td>
+<td>해당 없음</td>
+<td class="mark-cell"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></td>
+<td class="mark-cell"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></td>
+</tr>
+<tr>
+<td>2.5.1 단일 포인터</td>
+<td>가끔</td>
+<td>슬라이드에 버튼은 넣는 편</td>
+<td>L2 일부</td>
+</tr>
+<tr>
+<td>2.5.2 포인터 취소</td>
+<td>대부분</td>
+<td><code>click</code> 이벤트를 기본으로 사용</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>2.5.3 레이블과 네임</td>
+<td>가끔</td>
+<td>아이콘 버튼에 <code>aria-label</code>은 넣지만, 보이는 텍스트가 있는 버튼에도 다른 <code>aria-label</code>을 넣는 경우가 있음</td>
+<td>L2 일부</td>
+</tr>
+<tr>
+<td>2.5.4 동작기반 작동</td>
+<td>해당 없음</td>
+<td class="mark-cell"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></td>
+<td class="mark-cell"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></td>
+</tr>
+<tr>
+<td>3.1.1 기본 언어</td>
+<td>가끔</td>
+<td><code>&lt;html lang&gt;</code>은 넣지만 한국어 콘텐츠에 <code>lang="en"</code>을 두는 경우가 있음</td>
+<td>L1 일부</td>
+</tr>
+<tr>
+<td>3.2.1 사용자 요구 실행</td>
+<td>가끔</td>
+<td><code>target="_blank"</code> 링크에 새 창 안내를 넣지 않음</td>
+<td>미충족~L2 일부</td>
+</tr>
+<tr>
+<td>3.2.2 도움 정보</td>
+<td>대부분</td>
+<td>공통 헤더·푸터 구조라 결과적으로 위치가 일관</td>
+<td>L3 수준 우연 충족</td>
+</tr>
+<tr>
+<td>3.3.1 오류 정정</td>
+<td>드묾</td>
+<td>오류 문구는 보여주지만 <code>aria-describedby</code>·<code>aria-invalid</code> 연결과 초점 이동이 빠짐</td>
+<td>미충족</td>
+</tr>
+<tr>
+<td>3.3.2 레이블</td>
+<td>가끔</td>
+<td>일반 폼은 <code>&lt;label&gt;</code> 사용, 검색창·뉴스레터 입력은 <code>placeholder</code>만 쓰는 경우가 많음</td>
+<td>L1 일부</td>
+</tr>
+<tr>
+<td>3.3.3 접근 가능한 인증</td>
+<td>대부분</td>
+<td>붙여넣기 차단·캡차를 만들지 않음</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>3.3.4 반복 입력</td>
+<td>가끔</td>
+<td><code>autocomplete</code> 속성을 빠뜨리는 경우가 많음</td>
+<td>미충족~L2 일부</td>
+</tr>
+<tr>
+<td>4.1.1 마크업 오류</td>
+<td>대부분</td>
+<td>문법 오류는 드물지만 반복 컴포넌트에서 <code>id</code> 중복이 생길 수 있음</td>
+<td>L1</td>
+</tr>
+<tr>
+<td>4.2.1 웹 애플리케이션</td>
+<td>가끔</td>
+<td>아코디언 <code>aria-expanded</code>는 가끔, 모달의 초점 이동·Esc·초점 복귀는 대부분 빠짐</td>
+<td>미충족~L2 일부</td>
+</tr>
+</tbody>
+</table></div>
+<h3>자주 생기는 문제</h3><p>기본 처리 결과를 L1 핵심 항목에 대 보면, 10개 중 아래 6개가 자주 빠지거나 어긋납니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>L1 항목</th>
+<th>기본 처리에서 생기는 문제</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.4.1 건너뛰기</td>
+<td>본문 바로가기 링크 누락</td>
+<td>키보드·스크린리더 사용자가 매 페이지 메뉴를 다 지나야 함</td>
+</tr>
+<tr>
+<td>2.1.2 초점 표시</td>
+<td>디자인을 다듬으며 <code>outline: none</code>만 넣음</td>
+<td>키보드 사용자가 현재 위치를 알 수 없음</td>
+</tr>
+<tr>
+<td>3.3.2 레이블</td>
+<td>검색창·간단한 입력에 <code>placeholder</code>만 사용</td>
+<td>입력 중 안내가 사라지고 스크린리더가 이름을 못 읽음</td>
+</tr>
+<tr>
+<td>2.4.3 링크 텍스트</td>
+<td>"더보기"를 대상 구분 없이 반복</td>
+<td>링크 목록에서 목적지를 구분할 수 없음</td>
+</tr>
+<tr>
+<td>1.4.3 명도 대비</td>
+<td>보조 문구에 연회색(<code>#999</code> 계열) 사용</td>
+<td>저시력 사용자가 읽기 어려움</td>
+</tr>
+<tr>
+<td>3.1.1 기본 언어</td>
+<td>한국어 페이지에 <code>lang="en"</code></td>
+<td>스크린리더가 영어 발음으로 읽음</td>
+</tr>
+</tbody>
+</table></div>
+<p>특히 디자인 완성도를 요구받을수록 커스텀 스타일이 늘어나 초점 표시와 대비 문제가 더 자주 생깁니다.</p>
+<h3>일관되게 만드는 방법</h3><p>지시가 없을 때도 원하는 수준이 적용되려면, 기본값을 Claude의 판단에 맡기지 말고 미리 고정해 둬야 합니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>방법</th>
+<th>효과</th>
+<th>적용 범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>스킬로 등록(L1~L3 + 수준 선택 규칙)</td>
+<td>퍼블리싱 작업마다 자동으로 수준을 판단해 해당 자료만 불러옴</td>
+<td>모든 세션</td>
+</tr>
+<tr>
+<td>사용자 설정에 한 줄 추가</td>
+<td>예: "웹 제작 시 접근성 지시가 없으면 L1 기본 준수를 적용"</td>
+<td>모든 세션, 상세 기준은 없음</td>
+</tr>
+<tr>
+<td>프로젝트 지식에 실무 체크리스트 업로드</td>
+<td>해당 프로젝트 대화에서 자료를 참고</td>
+<td>프로젝트 안</td>
+</tr>
+<tr>
+<td>요청에 수준 명시</td>
+<td>예: "L2로 퍼블리싱해줘"</td>
+<td>그 요청만</td>
+</tr>
+</tbody>
+</table></div>
+<p>가장 확실한 조합은 <strong>스킬 등록 + 사용자 설정 한 줄</strong>입니다. 스킬이 상세 기준을, 사용자 설정이 기본값을 담당합니다.</p></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="lv-all.html"><span class="pager-label">이전</span>수준별 전체 비교</a><a class="pager-next" href="base-mistakes.html"><span class="pager-label">다음</span>자주 지적받는 실수와 검증 도구</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

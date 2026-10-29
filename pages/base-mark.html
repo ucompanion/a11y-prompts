@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹 접근성 품질마크(인증) | 기본문서 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html" aria-current="page">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-mark" aria-labelledby="base-mark-h" tabindex="-1"><p class="crumb">기본문서</p><h2 id="base-mark-h">웹 접근성 품질마크(인증)</h2><p>품질마크는 KWCAG 2.2 준수 여부를 과기정통부 지정 인증기관이 3단계로 심사해 부여하는 인증이며, 유효기간은 1년입니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-kv">
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주관</td>
+<td>과학기술정보통신부</td>
+</tr>
+<tr>
+<td>법적 근거</td>
+<td>지능정보화 기본법 제47조제1항, 같은 법 시행규칙 제9조제5항</td>
+</tr>
+<tr>
+<td>인증기관</td>
+<td>과기정통부 지정 기관. 2026년 현재 게시 예: 한국웹접근성인증평가원, 웹와치, 한국디지털접근성진흥원</td>
+</tr>
+<tr>
+<td>심사기준</td>
+<td>KWCAG 2.2에 기초한 품질마크 인증기준(운영지침·심사지침)</td>
+</tr>
+<tr>
+<td>심사 절차</td>
+<td>사전(서면)심사 → 전문가심사 → 사용자심사</td>
+</tr>
+<tr>
+<td>유효기간</td>
+<td>인증일로부터 1년</td>
+</tr>
+<tr>
+<td>인증범위</td>
+<td>사이트 단위(예: 대표 홈페이지), 인증서에 범위 명시</td>
+</tr>
+</tbody>
+</table></div>
+<p>출처: <a href="https://www.seoul.go.kr/helper/web_accessibility.do" target="_blank" rel="noopener">서울시 웹 접근성 안내<span class="blind"> (새 창 열림)</span></a>, <a href="https://www.culture.go.kr/localperform/main/contents.do?menuNo=400029" target="_blank" rel="noopener">문화포털 품질마크 안내<span class="blind"> (새 창 열림)</span></a>. 합격 점수, 수수료, 표본 페이지 수는 인증기관 공지를 확인해야 합니다.</p>
+<p>심사 단계별 대비:</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-trio">
+<thead>
+<tr>
+<th>단계</th>
+<th>심사 관점</th>
+<th>미리 할 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사전(서면)심사</td>
+<td>신청 범위, 자동 점검 결과, 기본 오류</td>
+<td>대상 URL 목록 정리, 자동 점검 도구로 오류 0건</td>
+</tr>
+<tr>
+<td>전문가심사</td>
+<td>표본 페이지의 33개 항목 수동 판정</td>
+<td>33개 항목 자체 판정, 공통 영역·템플릿 우선 수정</td>
+</tr>
+<tr>
+<td>사용자심사</td>
+<td>장애인 사용자의 실제 과업 수행</td>
+<td>스크린리더·키보드로 핵심 과업(가입, 검색, 신청, 결제) 완료 테스트</td>
+</tr>
+</tbody>
+</table></div>
+<p>사전 자체 점검 절차:</p>
+<ol>
+<li>인증 범위와 페이지 유형(메인, 목록, 상세, 폼, 팝업)을 정합니다.</li>
+<li>헤더, GNB, 푸터, 레이어 팝업 등 공통 영역을 먼저 고칩니다.</li>
+<li>페이지 유형별 대표 페이지로 33개 항목을 판정합니다.</li>
+<li>오류 상태, 빈 결과, 모달 열림, 탭 전환 등 동적 상태까지 확인합니다.</li>
+<li>PDF, 영상, 지도, 외부 위젯을 확인합니다.</li>
+<li>핵심 과업을 스크린리더와 키보드로 끝까지 수행합니다.</li>
+<li>수정 후 같은 표본으로 재판정하고 보고서로 남깁니다.</li>
+</ol>
+<p>점검 보고서 양식:</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table>
+<thead>
+<tr>
+<th>페이지 유형</th>
+<th>URL</th>
+<th>항목</th>
+<th>판정</th>
+<th>심사 단계 영향</th>
+<th>근거</th>
+<th>수정안</th>
+<th>재점검</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>예: 회원가입</td>
+<td>/join</td>
+<td>3.3.1</td>
+<td>부적합</td>
+<td>전문가·사용자</td>
+<td>오류를 빨간 테두리로만 표시</td>
+<td>오류 문구 + <code>aria-describedby</code> 연결</td>
+<td>적합</td>
+</tr>
+</tbody>
+</table></div></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="base-p4.html"><span class="pager-label">이전</span>원칙 4. 견고성</a><a class="pager-next" href="lv-overview.html"><span class="pager-label">다음</span>개요</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

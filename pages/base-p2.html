@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>원칙 2. 운용의 용이성 | 기본문서 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html" aria-current="page">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="base-p2" aria-labelledby="base-p2-h" tabindex="-1"><p class="crumb">기본문서</p><h2 id="base-p2-h">원칙 2. 운용의 용이성</h2><p>마우스 없이 키보드만으로, 또는 터치·음성으로도 모든 기능을 쓸 수 있어야 합니다. 검사항목이 15개로 가장 많고, 퍼블리싱 오류도 가장 많이 나는 영역입니다.</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="표 표"><table class="tbl-rule">
+<thead>
+<tr>
+<th>지침</th>
+<th>검사항목</th>
+<th>퍼블리싱 규칙</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1 입력장치 접근성</td>
+<td>2.1.1 키보드 사용 보장</td>
+<td>클릭 가능한 요소는 <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> 사용. <code>&lt;div onclick&gt;</code>이면 <code>tabindex="0"</code>, <code>role</code>, Enter·Space 처리 추가</td>
+</tr>
+<tr>
+<td>2.1 입력장치 접근성</td>
+<td>2.1.2 초점 이동과 표시</td>
+<td>초점 순서가 논리적이어야 함. <code>outline: none</code> 단독 사용 금지, <code>:focus-visible</code>로 대체 스타일 제공</td>
+</tr>
+<tr>
+<td>2.1 입력장치 접근성</td>
+<td>2.1.3 조작 가능</td>
+<td>터치 대상은 대각선 6mm 이상(약 44×44px 권장), 대상 간 간격 확보</td>
+</tr>
+<tr>
+<td>2.1 입력장치 접근성</td>
+<td>2.1.4 문자 단축키</td>
+<td>단일 문자 단축키는 끄기, 변경, 초점 있을 때만 동작 중 하나 제공</td>
+</tr>
+<tr>
+<td>2.2 충분한 시간 제공</td>
+<td>2.2.1 응답시간 조절</td>
+<td>세션 만료 등 시간 제한은 미리 알리고 연장 수단 제공</td>
+</tr>
+<tr>
+<td>2.2 충분한 시간 제공</td>
+<td>2.2.2 정지 기능 제공</td>
+<td>자동 슬라이드·움직이는 콘텐츠에 정지·이전·다음 버튼 제공</td>
+</tr>
+<tr>
+<td>2.3 광과민성 발작 예방</td>
+<td>2.3.1 깜빡임과 번쩍임 사용 제한</td>
+<td>초당 3~50회 깜빡이는 콘텐츠 사용 금지</td>
+</tr>
+<tr>
+<td>2.4 쉬운 내비게이션</td>
+<td>2.4.1 반복 영역 건너뛰기</td>
+<td>페이지 최상단에 "본문 바로가기" 링크 제공</td>
+</tr>
+<tr>
+<td>2.4 쉬운 내비게이션</td>
+<td>2.4.2 제목 제공</td>
+<td>페이지 <code>&lt;title&gt;</code>, 프레임 <code>title</code>, 콘텐츠 블록 <code>&lt;h1&gt;</code>~<code>&lt;h6&gt;</code> 제공. 팝업·탭 전환 시 제목도 갱신</td>
+</tr>
+<tr>
+<td>2.4 쉬운 내비게이션</td>
+<td>2.4.3 적절한 링크 텍스트</td>
+<td>"더보기", "여기"만 쓰지 않음. 숨김 텍스트로 "공지사항 더보기"처럼 목적 보완</td>
+</tr>
+<tr>
+<td>2.4 쉬운 내비게이션</td>
+<td>2.4.4 고정된 참조 위치 정보</td>
+<td>전자책·PDF 등은 원본 쪽 번호 같은 위치 정보 유지</td>
+</tr>
+<tr>
+<td>2.5 입력 방식</td>
+<td>2.5.1 단일 포인터 입력 지원</td>
+<td>핀치, 스와이프, 드래그 기능은 버튼 클릭 같은 단일 포인터 대안 제공</td>
+</tr>
+<tr>
+<td>2.5 입력 방식</td>
+<td>2.5.2 포인터 입력 취소</td>
+<td>기능은 누를 때가 아니라 뗄 때(<code>click</code>, <code>pointerup</code>) 실행</td>
+</tr>
+<tr>
+<td>2.5 입력 방식</td>
+<td>2.5.3 레이블과 네임</td>
+<td>화면에 보이는 버튼 텍스트가 접근 가능한 이름에 포함돼야 함</td>
+</tr>
+<tr>
+<td>2.5 입력 방식</td>
+<td>2.5.4 동작기반 작동</td>
+<td>흔들기·기울이기 기능은 UI 대안과 끄기 수단 제공</td>
+</tr>
+</tbody>
+</table></div>
+<p>건너뛰기 링크와 초점 스타일 예시:</p>
+<pre><code class="language-html">&lt;a href=&quot;#content&quot; class=&quot;skip&quot;&gt;본문 바로가기&lt;/a&gt;
+...
+&lt;main id=&quot;content&quot; tabindex=&quot;-1&quot;&gt;...&lt;/main&gt;
+</code></pre>
+<pre><code class="language-css">.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 0; top: 0; z-index: 1000; }
+:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
+</code></pre>
+<p>화면에는 숨기고 스크린리더에만 읽히는 텍스트(링크 목적 보완용):</p>
+<pre><code class="language-css">.blind {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+</code></pre>
+<pre><code class="language-html">&lt;a href=&quot;/notice&quot;&gt;더보기&lt;span class=&quot;blind&quot;&gt; 공지사항&lt;/span&gt;&lt;/a&gt;
+</code></pre>
+<p><code>display: none</code>이나 <code>visibility: hidden</code>은 스크린리더에서도 읽히지 않으므로 이 용도로 쓰지 않습니다.</p></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="base-p1.html"><span class="pager-label">이전</span>원칙 1. 인식의 용이성</a><a class="pager-next" href="base-p3.html"><span class="pager-label">다음</span>원칙 3. 이해의 용이성</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>

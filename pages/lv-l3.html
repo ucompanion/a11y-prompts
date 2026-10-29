@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L3 품질마크 (프롬프트용) | 실무 체크리스트 | 웹접근성 퍼블리싱 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/web-accessibility-guide.css">
+</head>
+<body>
+<a class="skip" href="#content">본문 바로가기</a>
+<header class="site-header">
+  <h1><a href="../index.html">웹접근성 퍼블리싱 가이드</a></h1>
+  <p>KWCAG 2.2 기준 기본문서, 실무 체크리스트(전체 비교, L1~L3), 지시 없을 때 클로드 처리 기준을 한곳에 모았습니다. 기준일 2026년 10월 28일.</p>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">목차 열기</button>
+</header>
+<div class="layout">
+  <nav class="site-nav" id="site-nav" aria-label="목차"><div class="nav-group"><h2 class="nav-title" id="g1-nav">기본문서</h2><ul aria-labelledby="g1-nav"><li><a href="base-overview.html">개요</a></li><li><a href="base-p1.html">원칙 1. 인식의 용이성</a></li><li><a href="base-p2.html">원칙 2. 운용의 용이성</a></li><li><a href="base-p3.html">원칙 3. 이해의 용이성</a></li><li><a href="base-p4.html">원칙 4. 견고성</a></li><li><a href="base-mark.html">웹 접근성 품질마크(인증)</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g2-nav">실무 체크리스트</h2><ul aria-labelledby="g2-nav"><li><a href="lv-overview.html">개요</a></li><li><a href="lv-l1.html">L1 기본 준수 (프롬프트용)</a></li><li><a href="lv-l2.html">L2 전문 준수 (프롬프트용)</a></li><li><a href="lv-l3.html" aria-current="page">L3 품질마크 (프롬프트용)</a></li><li><a href="base-components.html">컴포넌트별 체크리스트</a></li></ul></div><div class="nav-group"><h2 class="nav-title" id="g3-nav">참고사항</h2><ul aria-labelledby="g3-nav"><li><a href="ref-skill.html">웹접근성 스킬 가이드</a></li><li><a href="lv-all.html">수준별 전체 비교</a></li><li><a href="ref-default.html">지시 없을 때 클로드 처리 기준</a></li><li><a href="base-mistakes.html">자주 지적받는 실수와 검증 도구</a></li></ul></div></nav>
+  <main id="content" tabindex="-1"><section class="doc-section" id="lv-l3" aria-labelledby="lv-l3-h" tabindex="-1"><p class="crumb">실무 체크리스트</p><h2 id="lv-l3-h">L3 품질마크 (프롬프트용)</h2><p>노출 범위: <strong>규칙 + 구현 + 엄격한 판정 기준 + 전체 컴포넌트 패턴 + 누락 영역</strong>. 품질마크 수준의 완벽 준수를 위한 작업 자료이며, 인증 절차 설명은 담지 않습니다.</p>
+<h3>적용 기준</h3>
+<p>웹 접근성 자체가 목적인 작업에 씁니다. 품질마크 획득 여부와 관계없이 품질마크 수준의 완벽한 준수가 필요할 때입니다. 33개 항목에 예외가 없고, 필요하면 구조와 디자인도 바꿉니다.</p>
+<h3>작업 지시</h3>
+<ol>
+<li>33개 항목을 모두 적용하며 "생략"이나 "해당 시"로 넘기지 않는다. 해당 기능이 없으면 "해당 없음"과 근거를 남긴다.</li>
+<li>기준을 충족하지 못하면 DOM 구조, 레이아웃, 디자인 변경까지 제안·수정한다.</li>
+<li>공통 영역(헤더, GNB, 푸터, 레이어 팝업)을 가장 먼저 처리한다.</li>
+<li>기본 상태뿐 아니라 오류, 빈 결과, 열림·닫힘, 로딩 등 모든 상태를 점검한다.</li>
+<li>첨부파일, 영상, 지도, 외부 위젯 등 직접 만들지 않은 콘텐츠도 대상에 포함한다.</li>
+<li>결과물은 항목별 판정(적합·부적합·해당 없음), 근거, 수정 코드를 함께 제시한다.</li>
+</ol>
+<h3>항목별 규칙</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="항목별 규칙 표"><table class="tbl-rule4">
+<thead>
+<tr>
+<th>항목</th>
+<th>유형</th>
+<th>적용</th>
+<th>구현</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="10"><span class="rule-title">1.1.1 적절한 대체 텍스트 제공</span><span class="rule-crit">정보 손실 없음. 배너 문구 전체 기재</span></th><td title="대표 오류&#10;· 정보 이미지: alt 누락, 파일명, alt=&quot;이미지&quot;&#10;· 이모티콘 이미지: alt=&quot;이모티콘&quot;&#10;· QR코드: alt=&quot;QR코드&quot;&#10;· 캡차: alt에 정답 문자 기재&#10;· 사용자가 올리는 이미지: 입력 수단 없음">정보 이미지</td><td>준수</td><td><code>alt</code>에 이미지가 전달하는 내용을 씀. "이미지", "사진" 같은 요소 정보는 넣지 않음</td></tr>
+<tr><td title="대표 오류: alt=&quot;구분선&quot;">장식 이미지</td><td>준수</td><td><code>alt=""</code> 또는 CSS <code>background-image</code></td></tr>
+<tr><td title="대표 오류&#10;· 이미지 링크·버튼: alt=&quot;더보기&quot;처럼 기능을 알 수 없음&#10;· 썸네일 + 같은 제목 텍스트: 이미지와 텍스트가 각각 같은 내용을 읽음">이미지 링크·버튼</td><td>준수</td><td><code>alt</code>에 목적지·기능을 씀("홈", "입사 지원서 PDF 다운로드"). 같은 제목 텍스트와 한 링크로 묶으면 이미지 <code>alt=""</code></td></tr>
+<tr><td title="대표 오류&#10;· 아이콘 폰트·SVG·빈 링크·빈 버튼: &lt;button&gt;&lt;/button&gt;, &lt;a class=&quot;menu&quot;&gt;&lt;/a&gt;&#10;· 영어·약어 아이콘 텍스트: 영어 그대로 읽힘">아이콘 폰트·SVG 아이콘 버튼</td><td>준수</td><td>아이콘은 <code>aria-hidden="true"</code>, 요소 안에 <code>.blind</code> 텍스트 또는 <code>aria-label</code>. 영어·약어는 한국어로 풀어 씀(new → 새 글)</td></tr>
+<tr><td title="대표 오류: 문구 일부만 기재">텍스트가 들어간 배너</td><td>준수</td><td>이미지 속 문구 전체를 <code>alt</code>에. 길면 숨김 텍스트로</td></tr>
+<tr><td title="대표 오류: alt 누락"><code>&lt;input type="image"&gt;</code></td><td>준수</td><td><code>alt</code> 필수</td></tr>
+<tr><td>정보를 담은 인라인 SVG</td><td>준수</td><td><code>&lt;svg role="img" aria-labelledby="t"&gt;&lt;title id="t"&gt;…&lt;/title&gt;</code></td></tr>
+<tr><td title="대표 오류: alt 누락">이미지맵 <code>&lt;area&gt;</code></td><td>준수</td><td>영역마다 <code>alt</code></td></tr>
+<tr><td title="대표 오류: 수치 정보 누락">차트·인포그래픽</td><td>준수</td><td>짧은 <code>alt</code> + 상세 내용을 데이터 표, 숨김 텍스트, <code>aria-describedby</code> 중 하나로 제공</td></tr>
+<tr><td title="대표 오류: 배경 이미지 정보가 보조기술에 전달 안 됨">CSS 배경으로 넣은 정보 이미지</td><td>준수</td><td>담긴 정보 전부 <code>.blind</code> 텍스트로 제공</td></tr>
+<tr><th scope="rowgroup" rowspan="5"><span class="rule-title">1.2.1 자막 제공</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 음성 포함 영상: 자막·대본 모두 없음&#10;· 자막 품질: 요약 자막, 싱크 불일치">새로 제작하는 음성 포함 영상</td><td>준수</td><td>동기화된 자막(<code>&lt;track kind="captions" srclang="ko"&gt;</code>), 대본, 수어 중 하나 이상. 대사·음향까지 음성과 동등하게</td></tr>
+<tr><td title="대표 오류: 오디오만 제공">오디오 전용 콘텐츠</td><td>준수</td><td>자막 또는 대본(원고 텍스트) 제공</td></tr>
+<tr><td title="대표 오류: 자동 생성 자막에만 의존">기존·외부 임베드 영상</td><td>준수</td><td>플랫폼 자막 트랙 활성화 또는 대본 링크. 자동 생성 자막에만 의존하지 않음</td></tr>
+<tr><td title="대표 오류: 설명 없이 영상만">음성 없는 정보 영상</td><td>준수</td><td>화면해설(텍스트, 오디오, 대본) 제공</td></tr>
+<tr><td>실시간 방송</td><td>준수</td><td>실시간 자막 또는 사후 원고</td></tr>
+<tr><th scope="rowgroup" rowspan="6"><span class="rule-title">1.3.1 표의 구성</span><span class="rule-crit">모든 셀이 제목 셀과 연결</span></th><td title="대표 오류&#10;· 표 정보(제목·요약): caption 누락&#10;· 열 제목: 제목 셀을 &lt;td&gt;로&#10;· 반응형으로 바뀌는 표: 제목 셀 숨김으로 값만 남음">단순 데이터 표</td><td>준수</td><td><code>&lt;caption&gt;</code>에 표 제목, 열 제목은 <code>&lt;th scope="col"&gt;</code></td></tr>
+<tr><td title="대표 오류: 행 제목 미구분">행·열 제목이 모두 있는 표</td><td>준수</td><td>행 제목은 <code>&lt;th scope="row"&gt;</code></td></tr>
+<tr><td title="대표 오류: 레이아웃 표에 th 사용">레이아웃용 표</td><td>준수</td><td>사용하지 않음. 불가피하면 <code>th</code>·<code>caption</code>·<code>summary</code> 없이 <code>role="presentation"</code></td></tr>
+<tr><td title="대표 오류: 병합 셀과 데이터 연결 끊김">병합 셀이 있는 복잡한 표</td><td>준수</td><td><code>scope="colgroup"</code>·<code>"rowgroup"</code> 또는 <code>th</code>의 <code>id</code>와 <code>td</code>의 <code>headers</code> 연결</td></tr>
+<tr><td>표 구조 요약</td><td>준수</td><td><code>&lt;caption&gt;</code> 안 요약 문장 또는 <code>aria-describedby</code></td></tr>
+<tr><td title="대표 오류: 시각적 표가 구조 정보 없음"><code>div</code>로 만든 표 형태 목록</td><td>준수</td><td><code>&lt;table&gt;</code>로 재작성(불가하면 <code>role="table"</code>·<code>row</code>·<code>columnheader</code>·<code>cell</code>)</td></tr>
+<tr><th scope="rowgroup" rowspan="5"><span class="rule-title">1.3.2 콘텐츠의 선형구조</span><span class="rule-crit">CSS 해제 시 전체 순서 논리적</span></th><td title="대표 오류&#10;· 문서 순서: CSS 해제 시 순서 뒤섞임&#10;· 세로쓰기 등 시각 표현: 글자 단위로 쪼개져 의미 없음">본문 읽는 순서</td><td>준수</td><td>스타일을 끈 상태에서도 읽는 순서가 논리적(DOM 순서 = 시각 순서)</td></tr>
+<tr><td title="대표 오류: 숨김 텍스트가 엉뚱한 위치에서 읽힘">숨김 텍스트 위치</td><td>준수</td><td><code>.blind</code> 텍스트는 대상 요소 안 또는 바로 옆</td></tr>
+<tr><td title="대표 오류: 탭 목록 뒤에 패널이 몰려 있음">탭·아코디언 패널 위치</td><td>준수</td><td>패널을 트리거 바로 뒤에 두거나 <code>aria-controls</code> 연결</td></tr>
+<tr><td title="대표 오류: 제목이 본문보다 뒤에 읽힘">CSS로 바꾼 순서(<code>order</code>, <code>row-reverse</code>, <code>position</code>)</td><td>준수</td><td>전부 DOM 재배치</td></tr>
+<tr><td title="대표 오류: 팝업이 body 끝에 있고 초점 이동 없음">레이어 팝업 DOM 위치</td><td>준수</td><td>트리거 직후 삽입 또는 모달 패턴 완전 구현</td></tr>
+<tr><th scope="rowgroup" rowspan="4"><span class="rule-title">1.3.3 명확한 지시사항 제공</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류: &quot;동그란 버튼&quot;, &quot;오른쪽 버튼&quot;">모양·위치 지시("오른쪽 버튼")</td><td>준수</td><td>실제 명칭으로 지칭: "[다음] 버튼을 누르세요"</td></tr>
+<tr><td title="대표 오류: &quot;빨간 항목은 필수입니다&quot;">색 지시("빨간 항목은 필수")</td><td>준수</td><td>색과 함께 텍스트·기호 병기("필수")</td></tr>
+<tr><td title="대표 오류: 정답·오답을 소리로만 알림">소리만으로 하는 안내</td><td>준수</td><td>비프음 등 소리 안내와 함께 시각적 안내(텍스트) 병행</td></tr>
+<tr><td title="대표 오류: *만 표시">필수 입력 <code>*</code> 표시</td><td>준수</td><td>기호 의미를 폼 상단에 안내 + <code>required</code> 또는 숨김 텍스트 "필수"</td></tr>
+<tr><th scope="rowgroup" rowspan="6"><span class="rule-title">1.4.1 색에 무관한 콘텐츠 인식</span><span class="rule-crit">색 구분 요소 전수</span></th><td title="대표 오류: 빨간 테두리만">입력 오류 상태</td><td>준수</td><td>색 + 오류 문구·아이콘·"필수" 텍스트</td></tr>
+<tr><td title="대표 오류: 활성 탭을 색으로만 구분">선택된 탭·메뉴·페이지</td><td>준수</td><td>색 + 굵기·밑줄·테두리·아이콘, <code>aria-selected</code>·<code>aria-current</code></td></tr>
+<tr><td title="대표 오류: 색 점만 표시">상태 배지(승인, 반려 등)</td><td>준수</td><td>텍스트로 상태 표기(승인, 반려, 품절)</td></tr>
+<tr><td title="대표 오류: 밑줄 없이 색만 다름">본문 속 링크</td><td>준수</td><td>밑줄 등 색 외 표시</td></tr>
+<tr><td title="대표 오류: 범례를 색으로만 구분">그래프·차트 범례</td><td>준수</td><td>색 + 무늬·모양 + 직접 레이블</td></tr>
+<tr><td title="대표 오류: 휴일·예약 가능일을 색으로만">지도 표시</td><td>준수</td><td>지도·달력의 색 구분은 범례 텍스트, 모양으로 병행</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">1.4.2 자동 재생 금지</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 영상·오디오·배경음악: autoplay로 소리 재생&#10;· 자동 재생이 불가피한 경우: 정지 수단 없음">소리 있는 영상·오디오</td><td>준수</td><td><code>autoplay</code> 제거: 정지 상태로 제공하고 사용자가 재생, 제어판(멈춤·일시정지·음량) 제공. 불가피하면 3초 안에 멈추거나 지정 키(Esc 등)로 정지</td></tr>
+<tr><td title="대표 오류: muted 누락">무음 배경 영상</td><td>준수</td><td><code>autoplay muted</code>(소리 없음), 움직임 제어는 2.2.2</td></tr>
+<tr><td>3초 이내 효과음</td><td>준수</td><td>허용</td></tr>
+<tr><th scope="rowgroup" rowspan="6"><span class="rule-title">1.4.3 텍스트 콘텐츠의 명도 대비</span><span class="rule-crit">비활성 요소 외 전수</span></th><td title="대표 오류: 회색 안내 문구(#999 계열)">본문 텍스트</td><td>준수</td><td>4.5:1 이상</td></tr>
+<tr><td title="대표 오류&#10;· placeholder, 입력값, 링크·버튼 텍스트: 연한 placeholder&#10;· 상태별 텍스트(hover, 비활성 아님): hover 시 대비 저하">버튼·링크·입력 텍스트</td><td>준수</td><td>4.5:1 이상. hover 등 모든 상태에서 충족</td></tr>
+<tr><td>큰 텍스트(18pt, 굵은 14pt 이상)</td><td>준수</td><td>3:1 이상(화면 확대가 가능한 텍스트 콘텐츠도 3:1까지)</td></tr>
+<tr><td title="대표 오류: 연한 placeholder"><code>placeholder</code></td><td>준수</td><td>4.5:1</td></tr>
+<tr><td title="대표 오류: 배경 사진 위 흰 글자">이미지 안 텍스트</td><td>준수</td><td>전부 4.5:1(이미지 속 글자도 같은 기준)</td></tr>
+<tr><td title="대표 오류: 일부 구간만 대비 충족">사진·그라데이션 위 텍스트</td><td>준수</td><td>오버레이, 텍스트 배경, 그림자로 가장 밝은 부분 기준 대비 확보</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">1.4.4 콘텐츠 간의 구분</span><span class="rule-crit">구분 불명확한 영역 없음</span></th><td title="대표 오류&#10;· 목록·카드·게시물: 경계 없이 붙은 목록&#10;· 인접 버튼·링크: 링크가 붙어 있어 구분 불가">인접 목록·카드</td><td>준수</td><td>테두리, 구분선, 배경색 명도 차이 중 하나 이상. 인접 버튼·링크는 충분한 간격(터치 환경 포함)</td></tr>
+<tr><td title="대표 오류: 단락 구분 없음">본문 내 영역</td><td>준수</td><td>구분선, 헤딩, 여백(줄·단락·글자 간격 확보), 필요하면 서로 다른 무늬</td></tr>
+<tr><th scope="rowgroup" rowspan="7"><span class="rule-title">2.1.1 키보드 사용 보장</span><span class="rule-crit">키보드로 못 하는 기능 없음</span></th><td title="대표 오류&#10;· 링크·버튼: &lt;div onclick&gt;, &lt;a&gt;에 href 없음&#10;· 키보드 이벤트 처리: 키 처리 누락">링크·버튼</td><td>준수</td><td>이동은 <code>&lt;a href&gt;</code>, 동작은 <code>&lt;button type="button"&gt;</code>. 키 처리는 <code>keydown</code>에서(<code>keypress</code> 의존 지양)</td></tr>
+<tr><td title="대표 오류: 마우스 이벤트만 연결"><code>div</code>·<code>span</code> 클릭 요소</td><td>준수</td><td><code>&lt;button&gt;</code>으로 교체. 불가하면 <code>role="button" tabindex="0"</code> + Enter·Space 처리</td></tr>
+<tr><td title="대표 오류: 진입 후 조작 불가">키보드 트랩</td><td>준수</td><td>에디터·iframe·플러그인·모달에서 키보드로 진입·조작하고 Tab 또는 Esc로 빠져나올 수 있게</td></tr>
+<tr><td title="대표 오류: hover로만 열림">마우스오버 전용 서브메뉴</td><td>준수</td><td><code>focus</code>·<code>focusin</code>이나 <code>:focus-within</code>으로 같은 동작(서브메뉴, 툴팁)</td></tr>
+<tr><td title="대표 오류: 원본 input 제거로 초점 불가">커스텀 셀렉트·체크박스·라디오</td><td>준수</td><td>네이티브 <code>input</code>을 유지하고 시각적으로만 감춤(<code>opacity: 0</code>). <code>display: none</code>·<code>visibility: hidden</code> 금지</td></tr>
+<tr><td title="대표 오류: 드래그로만 조작">드래그 앤 드롭</td><td>준수</td><td>버튼이나 방향키로 같은 결과(위로·아래로 버튼 등)</td></tr>
+<tr><td>지도·캔버스</td><td>준수</td><td>키보드 컨트롤 또는 같은 정보의 텍스트 대안</td></tr>
+<tr><th scope="rowgroup" rowspan="5"><span class="rule-title">2.1.2 초점 이동과 표시</span><span class="rule-crit">초점 손실·순서 역전 없음</span></th><td title="대표 오류: outline: none 후 대체 스타일 없음">초점 표시</td><td>준수</td><td><code>:focus-visible</code>에 테두리·배경 변화(<code>outline: 2px solid; outline-offset: 2px</code>). <code>outline: none</code> 단독 금지, 표시에 시간제한 없음</td></tr>
+<tr><td title="대표 오류&#10;· 초점 순서: 아이디 → 로그인 → 비밀번호&#10;· 키보드 함정: 에디터·동영상 플레이어에 갇힘&#10;· 갑작스러운 전환: 초점 받으면 페이지 이동">초점 순서</td><td>준수</td><td>관례·의미 순서와 일치(아이디 → 비밀번호 → 로그인)하도록 DOM 순서로 해결, 양수 <code>tabindex</code> 금지. 모든 요소에서 다음·이전으로 이동 가능, 초점만으로 페이지 전환 금지</td></tr>
+<tr><td title="대표 오류: 닫힌 메뉴·비활성 슬라이드 안 링크에 초점">화면에서 숨긴 요소</td><td>준수</td><td><code>hidden</code>·<code>display: none</code>·<code>inert</code>, 비활성 슬라이드 내부 링크 <code>tabindex="-1"</code></td></tr>
+<tr><td title="대표 오류: 초점이 body로 사라짐">동적 변화 후 초점</td><td>준수</td><td>항목 삭제 후 다음 항목, 더보기 로드, 단계 이동까지 <code>focus()</code>로 관리</td></tr>
+<tr><td title="대표 오류: 초점 요소가 고정 영역 뒤에 숨음">고정 헤더에 가려지는 초점</td><td>준수</td><td><code>html { scroll-padding-top: 헤더높이; }</code>로 고정 헤더·쿠키 배너에 초점이 가리지 않게</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.1.3 조작 가능</span><span class="rule-crit">기존 컨트롤 포함 전수</span></th><td title="대표 오류: 작은 닫기·삭제 아이콘">새로 만드는 버튼·컨트롤</td><td>준수</td><td>최소 44×44px(대각선 6mm 이상)</td></tr>
+<tr><td title="대표 오류: 인접 콘트롤이 붙어 오조작">인접 컨트롤 간격</td><td>준수</td><td>테두리 안쪽 1px 이상 여백(그 영역은 포인터에 반응하지 않게)</td></tr>
+<tr><td title="대표 오류: 아이콘 크기 = 클릭 영역">기존 작은 컨트롤</td><td>준수</td><td>시각 크기를 유지하려면 <code>padding</code> 또는 가상 요소(<code>::before</code>)로 클릭 영역만 확장</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">2.1.4 문자 단축키</span><span class="rule-crit">해당 없음 근거 기록</span></th><td title="대표 오류&#10;· 비활성화: 끌 수 없음&#10;· 재설정: 변경 불가&#10;· 초점 시에만 활성화: 페이지 전역에서 동작">단일 문자 단축키</td><td>준수</td><td>단축키가 있을 때: 끄기·변경(Ctrl·Alt·Shift 조합으로 재설정) 설정, 또는 해당 컴포넌트(에디터, 플레이어)에 초점 있을 때만 동작</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.2.1 응답시간 조절</span><span class="rule-crit">해당 없음 근거 기록</span></th><td title="대표 오류&#10;· 일정 시간 후 페이지 이동·새로고침: meta refresh 자동 이동&#10;· 자동으로 사라지는 대화상자·레이어: 몇 초 후 자동 소멸">자동 새로고침·자동 이동</td><td>준수</td><td><code>&lt;meta http-equiv="refresh"&gt;</code> 사용 금지. 필요하면 해제·연장 수단 제공, 자동으로 사라지는 레이어는 닫을 때까지 유지</td></tr>
+<tr><td title="대표 오류: 예고 없이 로그아웃">로그인 세션 만료</td><td>준수</td><td>세션이 있는 서비스: 종료 최소 20초 전에 알림(<code>role="alertdialog"</code>) + 연장 또는 해제 버튼</td></tr>
+<tr><td title="대표 오류: 남은 시간 표시 없음">시간 제한 입력(예매, 인증번호)</td><td>준수</td><td>표시 + 연장 또는 재발송, 만료 사전 안내</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.2.2 정지 기능 제공</span><span class="rule-crit">정지·이전·다음 전부 제공</span></th><td title="대표 오류&#10;· 자동 슬라이드·캐러셀: 정지 버튼 없음&#10;· 자동 갱신 콘텐츠(실시간 순위, 시세): 갱신 중지 불가">자동 슬라이드·캐러셀</td><td>준수</td><td>정지·재생, 이전·다음 <code>&lt;button&gt;</code>. 자동 갱신 콘텐츠(실시간 순위, 시세)도 일시 정지 수단 제공</td></tr>
+<tr><td title="대표 오류&#10;· 롤링 배너·뉴스 티커: 키보드로 멈출 수 없음&#10;· 초점·마우스오버 시 정지: 초점 정지만 있고 버튼 없음">롤링 배너·뉴스 티커</td><td>준수</td><td>정지 버튼과 지나간 항목 이동 컨트롤(초점·마우스오버 정지는 버튼의 보완 수단)</td></tr>
+<tr><td>배경 영상·5초 이상 애니메이션</td><td>준수</td><td>+ 정지 버튼</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">2.3.1 깜빡임과 번쩍임 사용 제한</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 깜빡이는 콘텐츠: 정지 불가 깜빡임 텍스트&#10;· CSS·GIF 애니메이션: 빠른 깜빡임 GIF">CSS 깜빡임 효과</td><td>준수</td><td>초당 3~50회 깜빡이는 애니메이션 금지(<code>animation-duration</code> 0.33초 미만 반복 주의). 불가피하면 정지할 수 있게</td></tr>
+<tr><td title="대표 오류&#10;· 번쩍이는 콘텐츠: 화면 가득 번쩍이는 영상&#10;· 번쩍임 시간: 지속적 번쩍임">GIF·영상</td><td>준수</td><td>외부 소재 포함 프레임 확인 / 번쩍임(초당 3~50회)은 3초 미만, 10인치 이상 화면에서 면적 합 10% 이하</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.4.1 반복 영역 건너뛰기</span><span class="rule-crit">모든 페이지 동작 확인</span></th><td title="대표 오류&#10;· 건너뛰기 링크 위치: 메뉴 뒤에 위치&#10;· 연결 대상: id 불일치, 이동 후 초점 유실">본문 바로가기</td><td>준수</td><td>첫 번째 Tab 요소로 <code>&lt;a href="#content"&gt;</code>, 대상 <code>&lt;main id="content" tabindex="-1"&gt;</code></td></tr>
+<tr><td title="대표 오류: display: none으로 숨김">숨김 처리 방식</td><td>준수</td><td>평소 화면 밖, <code>:focus</code> 시 화면에 표시(<code>display: none</code>으로 숨기지 않음)</td></tr>
+<tr><td title="대표 오류: 순서 뒤바뀜">메뉴 바로가기 등 추가 링크</td><td>준수</td><td>주메뉴·하위메뉴 바로가기 추가. 본문 바로가기가 가장 먼저</td></tr>
+<tr><th scope="rowgroup" rowspan="6"><span class="rule-title">2.4.2 제목 제공</span><span class="rule-crit">제목 중복·누락 없음</span></th><td title="대표 오류&#10;· 페이지 &lt;title&gt;: 모든 페이지 같은 제목, &quot;환영합니다&quot;&#10;· 팝업창: 제목 없는 팝업&#10;· 특수 기호: &quot;★★공지★★&quot;">페이지 <code>&lt;title&gt;</code></td><td>준수</td><td>"페이지명 | 사이트명", 페이지마다 고유하고 내용을 나타냄. 팝업창에도 <code>&lt;title&gt;</code>, 불필요한 기호 반복 금지</td></tr>
+<tr><td title="대표 오류&#10;· 콘텐츠 블록: 제목을 &lt;p&gt;·&lt;strong&gt;으로&#10;· 본문 없는 블록: 내용 없는 빈 헤딩">헤딩 구조</td><td>준수</td><td><code>h1</code> 하나, 단계 건너뛰기 없음. 블록 제목은 <code>h1</code>~<code>h6</code>(<code>&lt;p&gt;</code>·<code>&lt;strong&gt;</code> 금지), 본문 없는 블록에는 붙이지 않음</td></tr>
+<tr><td title="대표 오류: 상세 페이지도 목록 제목">게시물 상세 <code>&lt;title&gt;</code></td><td>준수</td><td>게시물 제목·검색어·페이지 번호 반영</td></tr>
+<tr><td title="대표 오류: title 누락"><code>&lt;iframe title&gt;</code></td><td>준수</td><td>내용을 설명하는 <code>title</code>(빈 프레임도 "빈 프레임" 등)</td></tr>
+<tr><td>숨김 블록 제목</td><td>준수</td><td>모든 주요 영역 <code>&lt;h2 class="blind"&gt;</code></td></tr>
+<tr><td title="대표 오류: 첫 화면 제목 유지">화면 전환 시 제목 갱신</td><td>준수</td><td>탭 전환·단계 이동·모달까지 <code>document.title</code> 갱신</td></tr>
+<tr><th scope="rowgroup" rowspan="4"><span class="rule-title">2.4.3 적절한 링크 텍스트</span><span class="rule-crit">문맥 없이도 목적 파악</span></th><td title="대표 오류&#10;· &quot;더보기&quot;: 같은 &quot;더보기&quot;가 여러 개&#10;· &quot;바로가기&quot;, &quot;GO&quot;: 대상 없는 &quot;바로가기&quot;">반복되는 "더보기"</td><td>준수</td><td>맥락으로 대상을 알 수 있게, 여럿이면 숨김 텍스트: <code>더보기&lt;span class="blind"&gt; 공지사항&lt;/span&gt;</code></td></tr>
+<tr><td title="대표 오류&#10;· 이미지 링크 + 텍스트: 같은 곳 링크가 둘, 중복 낭독&#10;· 아이콘 링크: 빈 링크">이미지 링크</td><td>준수</td><td><code>alt</code>에 목적지. 같은 대상의 텍스트가 있으면 하나의 링크로 묶고 이미지 <code>alt=""</code></td></tr>
+<tr><td title="대표 오류: 링크로 동작 실행"><code>href="#"</code>인 동작용 링크</td><td>준수</td><td><code>&lt;button&gt;</code>으로 교체</td></tr>
+<tr><td title="대표 오류&#10;· 문장 속 링크: &quot;여기를 클릭하세요&quot;&#10;· 같은 대상 다른 관점 링크: 같은 문구에 목적지가 다름&#10;· 새 창·파일 다운로드: 정보 없이 새 창">URL 그대로 노출된 링크</td><td>준수</td><td>전부 의미 있는 텍스트로(목적지·용도를 나타내는 단어에 링크)</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">2.4.4 고정된 참조 위치 정보</span><span class="rule-crit">해당 없음 근거 기록</span></th><td title="대표 오류&#10;· 페이지 구분자: 쪽 번호 없음&#10;· 페이지 이동: 이동 수단 없음&#10;· 확대·리플로우: 확대 시 쪽 번호 사라짐">전자책·문서 뷰어</td><td>준수</td><td>원본 쪽 번호 표시(EPUB pagebreak 등)와 쪽 번호 이동 기능. 확대·리플로우·플랫폼이 바뀌어도 같은 위치 정보 유지</td></tr>
+<tr><th scope="rowgroup" rowspan="4"><span class="rule-title">2.5.1 단일 포인터 입력 지원</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류: 스와이프로만 넘김">스와이프 슬라이드</td><td>준수</td><td>스와이프 기능이 있으면 이전·다음 버튼</td></tr>
+<tr><td title="대표 오류: 손잡이를 끌어야만 조작">드래그 슬라이더</td><td>준수</td><td><code>&lt;input type="range"&gt;</code> 사용, 트랙 클릭 또는 증감 버튼 제공</td></tr>
+<tr><td title="대표 오류: 두 손가락으로만 확대">핀치 줌 지도·이미지</td><td>준수</td><td>확대·축소 버튼</td></tr>
+<tr><td title="대표 오류: 드래그로만 업로드">드래그 정렬</td><td>준수</td><td>이동 버튼, 파일 선택 버튼(드래그 업로드 대안)</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">2.5.2 포인터 입력 취소</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류: 누르는 순간 실행">클릭 실행 시점</td><td>준수</td><td><code>click</code> 또는 <code>pointerup</code>에서 실행. <code>mousedown</code>·<code>touchstart</code>·<code>pointerdown</code>만으로 실행 금지</td></tr>
+<tr><td title="대표 오류: 취소 수단 없음">드래그 취소</td><td>준수</td><td>완료 전 중지(시작 위치나 밖으로 놓기) 또는 완료 후 취소 가능</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">2.5.3 레이블과 네임</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 보충 설명이 필요할 때: 보이는 텍스트가 네임 뒤쪽이나 누락&#10;· 폼 컨트롤: aria-label이 &lt;label&gt;을 덮어씀"><code>aria-label</code> 쓴 버튼</td><td>준수</td><td>보이는 텍스트로 시작("검색" → <code>aria-label="검색 실행"</code>), <code>&lt;label&gt;</code> 텍스트와 일치</td></tr>
+<tr><td title="대표 오류&#10;· 텍스트 버튼·링크: 보이는 &quot;검색&quot;, aria-label=&quot;찾기&quot;&#10;· 텍스트 이미지 버튼: 문구와 다른 alt">텍스트가 보이는 버튼</td><td>준수</td><td><code>aria-label</code> 없이 보이는 텍스트를 그대로 네임으로. 텍스트 이미지 버튼은 <code>alt</code>에 이미지 속 문구 그대로</td></tr>
+<tr><td title="대표 오류: 보이는 텍스트와 무관한 title"><code>title</code> 속성</td><td>준수</td><td>전체, 보이는 텍스트 포함</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">2.5.4 동작기반 작동</span><span class="rule-crit">해당 없음 근거 기록</span></th><td title="대표 오류&#10;· 흔들기·기울이기: 동작으로만 실행&#10;· 오작동 방지: 끌 수 없음">흔들기·기울이기 기능</td><td>준수</td><td>UI 버튼 대안 + 동작 인식(흔들기·기울이기·손동작·카메라) 끄기 설정</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">3.1.1 기본 언어 표시</span><span class="rule-crit"><span class="mark mark-off" role="img" aria-label="적용 안 함">—</span></span></th><td title="대표 오류&#10;· 페이지 기본 언어: lang 누락, 한국어 페이지에 lang=&quot;en&quot;&#10;· iframe 내부 문서: 내부 문서 lang 누락">페이지 주 언어</td><td>준수</td><td><code>&lt;html lang="ko"&gt;</code>(ISO 639 언어 코드). iframe 내부 문서에도 <code>lang</code></td></tr>
+<tr><td title="대표 오류: 영문 페이지도 lang=&quot;ko&quot;">다국어 페이지</td><td>준수</td><td>언어별 페이지마다 해당 <code>lang</code></td></tr>
+<tr><td>본문 속 외국어 구간</td><td>준수</td><td><code>&lt;span lang="en"&gt;</code>(표준 필수는 아니나 발음 정확도에 도움)</td></tr>
+<tr><th scope="rowgroup" rowspan="5"><span class="rule-title">3.2.1 사용자 요구에 따른 실행</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 새 창 링크: 예고 없이 새 창&#10;· 팝업창: 페이지 진입 시 새 창 팝업">새 창 링크</td><td>준수</td><td>열기 전에 알림: <code>target="_blank"</code> + <code>&lt;span class="blind"&gt;(새 창 열림)&lt;/span&gt;</code> 또는 아이콘 <code>alt</code></td></tr>
+<tr><td title="대표 오류&#10;· 입력에 의한 변화(셀렉트, 라디오, 체크박스): 셀렉트 변경 즉시 페이지 이동&#10;· 자동 제출: 마지막 칸 입력 시 자동 제출"><code>select</code> 변경 시 자동 이동</td><td>준수</td><td>항목 선택만으로 실행·제출하지 않고 별도 [이동] 버튼으로. 모든 값 입력 시 자동 제출 금지</td></tr>
+<tr><td title="대표 오류: 초점 받으면 드롭다운 항목 실행">초점만으로 실행되는 동작</td><td>준수</td><td>초점만으로 서식 제출·새 창·페이지 이동·메뉴 실행 금지(색 반전·테두리 같은 시각 변화는 허용)</td></tr>
+<tr><td title="대표 오류&#10;· 레이어 팝업: 레이어가 열려도 초점은 뒤에&#10;· 창·팝업 닫기: 닫기 후 초점 유실, 닫히지 않음">페이지 진입 시 팝업</td><td>준수</td><td>레이어 팝업도 모달 패턴 + 초점 관리(닫으면 연 위치로 초점 복귀)</td></tr>
+<tr><td title="대표 오류: 인증번호 칸 자동 이동">입력 완료 시 자동 초점 이동(인증번호 칸)</td><td>준수</td><td>자동 이동 제거</td></tr>
+<tr><th scope="rowgroup" rowspan="1"><span class="rule-title">3.2.2 찾기 쉬운 도움 정보</span><span class="rule-crit">페이지 간 불일치 없음</span></th><td title="대표 오류&#10;· 담당자 연락처(전화, 이메일, 운영시간): 페이지마다 위치 다름&#10;· 연락 방법(메신저, 채팅, 게시판, SNS): 일부 페이지에만 노출&#10;· 자동화 연결(챗봇): 페이지마다 다른 위치">고객센터·도움말·챗봇</td><td>준수</td><td>공통 레이아웃(헤더·푸터)에서 모든 페이지 같은 위치·순서(연락처, 도움말, 챗봇 플로팅 버튼 등)</td></tr>
+<tr><th scope="rowgroup" rowspan="5"><span class="rule-title">3.3.1 오류 정정</span><span class="rule-crit">모든 폼·모든 오류 유형</span></th><td title="대표 오류&#10;· 오류 메시지 연결: 메시지가 필드와 무관하게 표시&#10;· 오류 위치·이유 안내: &quot;입력값을 확인하세요&quot;만 표시&#10;· 수정 방법 제시: 형식 안내 없음">필드별 오류 문구</td><td>준수</td><td>오류 문구를 <code>aria-describedby</code>로 필드에 연결 + <code>aria-invalid="true"</code>. 어떤 항목이 왜 틀렸는지("생년월일은 숫자 8자리로 입력하세요")와 올바른 형식 예시 제시</td></tr>
+<tr><td title="대표 오류: 오류 시 전부 초기화">오류 시 입력값 유지</td><td>준수</td><td>제출 실패해도 입력값 보존(비밀번호 제외 가능)</td></tr>
+<tr><td title="대표 오류: 오류 표시만 하고 초점은 제출 버튼">제출 시 오류 안내</td><td>준수</td><td>+ 상단 오류 요약 <code>role="alert"</code></td></tr>
+<tr><td title="대표 오류: 시각 표시만">실시간 입력 검증</td><td>준수</td><td>결과 문구를 <code>aria-live="polite"</code> 영역에</td></tr>
+<tr><td>결제·삭제 등 중요 처리</td><td>준수</td><td>확인·취소 단계 전부</td></tr>
+<tr><th scope="rowgroup" rowspan="7"><span class="rule-title">3.3.2 레이블 제공</span><span class="rule-crit">예외 없음</span></th><td title="대표 오류&#10;· 텍스트 입력·셀렉트·텍스트 영역: 레이블이 텍스트로만 있고 연결 없음&#10;· 입력 형식·조건 안내: 안내가 입력란과 분리&#10;· 커스텀 입력 컴포넌트: 네임 없음">텍스트 입력</td><td>준수</td><td><code>&lt;label for="id"&gt;</code>와 <code>id</code> 연결, 또는 <code>&lt;label&gt;</code>로 감싸기. 형식·조건 안내는 <code>aria-describedby</code>로 연결, 커스텀 입력은 <code>aria-labelledby</code></td></tr>
+<tr><td title="대표 오류: placeholder만">레이블이 안 보이는 입력(검색창)</td><td>준수</td><td>숨김 <code>&lt;label&gt;</code>, <code>title</code>, <code>aria-label</code>, <code>aria-labelledby</code> 중 하나</td></tr>
+<tr><td><code>placeholder</code>만 있는 입력</td><td>준수</td><td>사용 금지, 레이블 추가</td></tr>
+<tr><td title="대표 오류: 그룹 질문이 연결되지 않음">라디오·체크박스 그룹</td><td>준수</td><td>각 항목 <code>&lt;label&gt;</code> + 그룹은 <code>&lt;fieldset&gt;</code>·<code>&lt;legend&gt;</code></td></tr>
+<tr><td title="대표 오류: 첫 칸만 레이블">여러 칸 입력(전화번호, 생년월일)</td><td>준수</td><td>칸마다 <code>title</code> 또는 숨김 레이블("휴대폰 앞자리")</td></tr>
+<tr><td title="대표 오류: 시각 기호만">필수 입력</td><td>준수</td><td><code>required</code>·<code>aria-required</code> 또는 레이블에 "필수"</td></tr>
+<tr><td>필터·정렬 등 숨은 입력</td><td>준수</td><td>모두 레이블</td></tr>
+<tr><th scope="rowgroup" rowspan="3"><span class="rule-title">3.3.3 접근 가능한 인증</span><span class="rule-crit">인지 테스트만 요구하지 않음</span></th><td title="대표 오류&#10;· 아이디·비밀번호: onpaste 차단, autocomplete=&quot;off&quot;&#10;· 인증번호(OTP): 칸마다 직접 입력 강요">비밀번호 붙여넣기·자동완성</td><td>준수</td><td><code>paste</code> 차단 금지, <code>autocomplete="username"</code>·<code>"current-password"</code>, OTP는 <code>autocomplete="one-time-code"</code>와 붙여넣기 허용</td></tr>
+<tr><td title="대표 오류: 대안 없는 이미지 퀴즈">이미지 캡차</td><td>준수</td><td>음성 캡차 또는 다른 인증 수단 병행</td></tr>
+<tr><td title="대표 오류: 비밀번호만">퍼즐·계산형 인증</td><td>준수</td><td>인지 테스트가 없는 대안(소셜 로그인, 생체 인증, 휴대폰·USB 소지 인증 등)</td></tr>
+<tr><th scope="rowgroup" rowspan="2"><span class="rule-title">3.3.4 반복 입력 정보</span><span class="rule-crit">재입력 요구 없음</span></th><td title="대표 오류: autocomplete 누락">개인정보 입력 필드</td><td>준수</td><td><code>autocomplete</code>: <code>name</code>·<code>email</code>·<code>tel</code>·<code>postal-code</code>·<code>street-address</code> 등</td></tr>
+<tr><td title="대표 오류&#10;· 주문자·수령자 정보: 같은 주소 재입력&#10;· 다단계 폼: 단계마다 이름·연락처 재입력">다단계 폼의 이전 입력값</td><td>준수</td><td>이전 단계 값 자동 채움 또는 선택 목록 전부</td></tr>
+<tr><th scope="rowgroup" rowspan="4"><span class="rule-title">4.1.1 마크업 오류 방지</span><span class="rule-crit">중복 속성·중첩 오류 포함</span></th><td title="대표 오류: 같은 id가 목록마다 반복">중복 <code>id</code></td><td>준수</td><td>문서 안 <code>id</code> 유일. 반복 컴포넌트·동적 삽입은 고유 접미사</td></tr>
+<tr><td title="대표 오류&#10;· 요소의 열고 닫음: &lt;/div&gt; 누락&#10;· 요소의 중첩: &lt;b&gt;&lt;i&gt;&lt;/b&gt;&lt;/i&gt;, &lt;a&gt; 안 &lt;button&gt;, &lt;p&gt; 안 &lt;div&gt;">열고 닫기·중첩 오류</td><td>준수</td><td>시작·끝 태그 짝 맞춤(<code>&lt;/div&gt;</code> 누락 금지), <code>&lt;a&gt;</code> 안 <code>&lt;button&gt;</code>·<code>&lt;p&gt;</code> 안 <code>&lt;div&gt;</code> 같은 잘못된 중첩 금지</td></tr>
+<tr><td title="대표 오류: class를 두 번 선언">중복 속성</td><td>준수</td><td>한 요소에 같은 속성 두 번 금지</td></tr>
+<tr><td>문법 오류 전체</td><td>준수</td><td>W3C Markup Validator 오류 0건</td></tr>
+<tr><th scope="rowgroup" rowspan="11"><span class="rule-title">4.2.1 웹 애플리케이션 접근성 준수</span><span class="rule-crit">이름·역할·상태·값 전달</span></th><td title="대표 오류&#10;· 네이티브 요소 우선: div로 만든 버튼·체크박스&#10;· ARIA 사용 규칙: 숨긴 요소가 초점 받음">네이티브 요소 우선</td><td>준수</td><td><code>&lt;button&gt;</code>·<code>&lt;a&gt;</code>·<code>&lt;input&gt;</code>·<code>&lt;select&gt;</code>·<code>&lt;details&gt;</code>·<code>&lt;dialog&gt;</code>로 되면 ARIA를 쓰지 않음. 네이티브 의미를 덮지 않고, 초점 받는 요소에 <code>aria-hidden="true"</code> 금지</td></tr>
+<tr><td title="대표 오류: 시각 상태만 바뀌고 속성 미갱신">토글·펼침 상태</td><td>준수</td><td><code>role</code> + 접근 가능한 이름 + 상태 속성(<code>aria-expanded</code>·<code>aria-pressed</code>·<code>aria-checked</code>)을 스크립트로 갱신</td></tr>
+<tr><td>탭</td><td>준수</td><td>+ 방향키·Home·End, 선택 탭만 <code>tabindex="0"</code></td></tr>
+<tr><td>모달</td><td>준수</td><td>+ Tab 순환 제한, 배경 <code>inert</code>, 초점 복귀</td></tr>
+<tr><td>아코디언</td><td>준수</td><td><code>&lt;button aria-expanded aria-controls&gt;</code></td></tr>
+<tr><td>캐러셀</td><td>준수</td><td>+ 현재 위치 텍스트, 초점 시 자동 정지</td></tr>
+<tr><td>드롭다운·메뉴 버튼</td><td>준수</td><td>+ <code>aria-haspopup</code>, 방향키 탐색</td></tr>
+<tr><td>콤보박스·자동완성</td><td>준수</td><td><code>role="combobox"</code>, <code>aria-activedescendant</code>, 결과 수 안내</td></tr>
+<tr><td title="대표 오류: &quot;장바구니에 담김&quot;이 안 읽힘">상태 메시지(저장됨, 담김)</td><td>준수</td><td><code>role="status"</code>, 긴급은 <code>role="alert"</code></td></tr>
+<tr><td title="대표 오류: 로딩 상태 미전달">로딩 상태</td><td>준수</td><td><code>aria-busy="true"</code>, 완료 시 상태 메시지</td></tr>
+<tr><td title="대표 오류: 접근 불가 지도·채팅 위젯">외부 위젯·플러그인</td><td>준수</td><td>접근 불가하면 대체 수단(텍스트, 링크) 제공</td></tr>
+</tbody>
+</table></div>
+<h3>컴포넌트 패턴</h3>
+<p>컴포넌트별 마크업과 키보드 동작은 <a href="base-components.html">컴포넌트별 체크리스트</a>를 참고합니다.</p>
+<h3>놓치기 쉬운 영역</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="놓치기 쉬운 영역 표"><table class="tbl-kv">
+<thead>
+<tr>
+<th>영역</th>
+<th>처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF·HWP 첨부</td>
+<td>접근 가능한 문서로 변환하거나 같은 내용의 HTML 제공</td>
+</tr>
+<tr>
+<td>지도</td>
+<td>주소·오시는 길을 텍스트로 병기</td>
+</tr>
+<tr>
+<td>외부 임베드(영상, SNS, 채팅 위젯)</td>
+<td><code>iframe title</code>, 키보드 접근 확인, 불가하면 대체 링크</td>
+</tr>
+<tr>
+<td>레이어 팝업·공지</td>
+<td>모달 패턴 적용, 닫기 버튼 레이블</td>
+</tr>
+<tr>
+<td>로딩·스켈레톤</td>
+<td><code>aria-busy</code> 또는 <code>role="status"</code>로 상태 안내</td>
+</tr>
+<tr>
+<td>오류·빈 결과 페이지</td>
+<td>제목·안내 문구·이동 링크 제공</td>
+</tr>
+</tbody>
+</table></div>
+<h3>완료 점검</h3>
+<ul class="checklist">
+<li class="check"><input type="checkbox" id="lv-l3-c1"><label for="lv-l3-c1">33개 항목 전부 적합 또는 근거 있는 해당 없음</label></li>
+<li class="check"><input type="checkbox" id="lv-l3-c2"><label for="lv-l3-c2">W3C Validator 오류 0건, 자동 검사 오류 0건</label></li>
+<li class="check"><input type="checkbox" id="lv-l3-c3"><label for="lv-l3-c3">페이지 유형별(메인, 목록, 상세, 폼, 팝업) 모든 상태 점검</label></li>
+<li class="check"><input type="checkbox" id="lv-l3-c4"><label for="lv-l3-c4">센스리더·NVDA·VoiceOver로 핵심 과업(가입, 검색, 신청, 결제) 끝까지 수행</label></li>
+<li class="check"><input type="checkbox" id="lv-l3-c5"><label for="lv-l3-c5">첨부·외부 콘텐츠 처리 완료</label></li>
+<li class="check"><input type="checkbox" id="lv-l3-c6"><label for="lv-l3-c6">항목별 판정·근거·수정 코드 기록</label></li>
+</ul></section><nav class="pager" aria-label="이전·다음 문서"><a class="pager-prev" href="lv-l2.html"><span class="pager-label">이전</span>L2 전문 준수 (프롬프트용)</a><a class="pager-next" href="base-components.html"><span class="pager-label">다음</span>컴포넌트별 체크리스트</a></nav></main>
+</div>
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '목차 닫기' : '목차 열기';
+  });
+})();
+</script>
+</body>
+</html>
